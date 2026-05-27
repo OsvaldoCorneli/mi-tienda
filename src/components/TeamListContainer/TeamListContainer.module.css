@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+   margin: 32px;
+}
+
+.container1{
+    border: solid 1px black;
+    margin: 8px;
+    padding: 16px;
+    background-color: var(--thirdColor);
+     color: var(--secundaryColor);
+}
+
+.container1 img{
+    width: 100px;
+    border-radius: 25px;
+    
+}
+
+.container1 h4{
+    margin: 5px 0 16px 0;
+
+
+}

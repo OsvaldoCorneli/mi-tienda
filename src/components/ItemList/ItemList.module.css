@@ -1,0 +1,17 @@
+.cardsConteiner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 8px;
+    padding-block: 16px;
+}
+h2{
+    text-align: center;
+    margin: 32px 0 0 0;
+
+}

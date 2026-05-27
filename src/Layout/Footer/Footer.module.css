@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--secundaryColor);
+    padding: 32px;
+    margin: 32px 0 0 0 
+
+}
+
+.container1{
+    
+    
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    text-align: center;
+}
+.container3{
+    height: 100%;
+    align-self: center;
+    justify-content: center;
+}
+
+.container3 img{
+    background-color: var(red);
+    width: 400px;
+}
+

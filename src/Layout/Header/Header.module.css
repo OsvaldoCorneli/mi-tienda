@@ -1,0 +1,51 @@
+.backgorund {
+    background-color: var(--thirdColor);
+    height: 100%;
+    width: 100%;
+    padding: 5px 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container1 {
+    width: 20%;
+    margin: 0 1% 0 0;
+}
+
+.container2 {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-evenly;
+}
+
+.container3 {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-self: start;
+    padding: 15px 0 0 0;
+
+}
+
+.container3 a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--primaryColor);
+}
+
+.container3 a:hover {
+  color: var(--secundaryColor);
+}
+
+
+
+.logoMobile {
+    width: 20%;
+}
+
+.logoMiTienda {
+    width: 70%;
+}
