@@ -1,25 +1,16 @@
-@media (max-width:760px){
-    .footerDesktop{
-        display: none;
-        
-    }
-}
 
 
 
 .container{
-    display: flex;
+   background-color: var(--secundaryColor);
     justify-content: space-evenly;
-    background-color: var(--secundaryColor);
+    margin: 32px 0 0;
     padding: 32px;
-    margin: 32px 0 0 0 
+    display: flex;
+    width: 100%;
 
 }
 
-.container1{
-    
-    
-}
 
 .container2{
     display: flex;
@@ -28,7 +19,7 @@
     text-align: center;
 }
 .container3{
-    height: 100%;
+
     align-self: center;
     justify-content: center;
 }

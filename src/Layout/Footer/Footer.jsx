@@ -6,7 +6,6 @@ function Footer() {
     return (
 
         <footer className={footerCss.container}>
-            <div className={footerCss.footerDesktop}>
 
             <div className={footerCss.container2}>
                 <TeamListContainer/>
@@ -17,7 +16,7 @@ function Footer() {
 
             <div className={footerCss.container3}>
                 <img src={imageFooter} alt="" />
-            </div>
+
              </div>
 
 

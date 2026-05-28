@@ -1,9 +1,13 @@
+
+
 .container{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
    margin: 32px;
+   flex-direction: column;
 }
+
 
 .container1{
     border: solid 1px black;
@@ -11,7 +15,11 @@
     padding: 16px;
     background-color: var(--thirdColor);
      color: var(--secundaryColor);
+     width: 175px;
+    
 }
+
+
 
 .container1 img{
     width: 100px;
@@ -23,4 +31,15 @@
     margin: 5px 0 16px 0;
 
 
+}
+
+@media (min-width: 766px){
+
+.container{
+    flex-direction: row;
+   
+}
+
+
+    
 }
