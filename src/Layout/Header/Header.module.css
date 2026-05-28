@@ -1,51 +1,109 @@
+.HeaderDesktop {
+    display: none;
+}
+
 .backgorund {
     background-color: var(--thirdColor);
-    height: 100%;
+}
+
+.HeaderMobile {
     width: 100%;
-    padding: 5px 200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+
 }
 
-.container1 {
-    width: 20%;
-    margin: 0 1% 0 0;
-}
-
-.container2 {
-    width: 55%;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-content: space-evenly;
-}
-
-.container3 {
-    width: 10%;
+.containerMobile {
     display: flex;
     justify-content: space-between;
-    align-self: start;
-    padding: 15px 0 0 0;
+    align-items: center;
 
+    max-width: 1024px;
+    margin: 0 auto;
+
+    padding: 16px;
 }
 
-.container3 a {
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: var(--primaryColor);
-}
-
-.container3 a:hover {
-  color: var(--secundaryColor);
-}
-
-
-
-.logoMobile {
-    width: 20%;
+.containerMobile1 {
+    display: flex;
+    align-items: center;
 }
 
 .logoMiTienda {
-    width: 70%;
+    width: 40vw;
+    max-width: 170px;
+}
+
+.logoMobile {
+    width: 8vw;
+    max-width: 30px;
+}
+
+.containerMobile2 a {
+    font-size: 2rem;
+    color: var(--primaryColor);
+    margin-right: 16px;
+}
+
+.stack {
+    font-size: 2rem;
+    color: var(--primaryColor);
+    margin-left: 16px;
+}
+
+
+
+@media (min-width: 766px) {
+
+    .HeaderMobile {
+        display: none;
+    }
+
+    .HeaderDesktop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background-color: var(--thirdColor);
+        padding: 16px 32px;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .container1 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .container2 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 0 32px;
+    }
+
+    .container3 {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .container3 a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: var(--primaryColor);
+        transition: 0.2s;
+    }
+
+    .container3 a:hover {
+        color: var(--secundaryColor);
+    }
+
+    .logoMiTienda {
+        width: 170px;
+    }
+
+    .logoMobile {
+        width: 30px;
+    }
+
 }

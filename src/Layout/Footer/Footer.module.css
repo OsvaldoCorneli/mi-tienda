@@ -1,3 +1,12 @@
+@media (max-width:760px){
+    .footerDesktop{
+        display: none;
+        
+    }
+}
+
+
+
 .container{
     display: flex;
     justify-content: space-evenly;
