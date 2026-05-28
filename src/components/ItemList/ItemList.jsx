@@ -1,5 +1,4 @@
 import Item from "../Item/Item";
-import ItemOnSale from "../ItemOnSale/ItemOnSale";
 import ItemListCss from "./ItemList.module.css"
 function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
 
@@ -14,13 +13,14 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
                 !onSales
                     ? products.map((element) => (
                        element.onSale
-                            ? <ItemOnSale
+                            ? <Item
                                 key={element.id}
                                 id={element.id}
                                 name={element.name}
                                 price={element.price}
                                 stock={element.stock}
                                 discount={element.discount}
+                                onSale={element.onSale}
                                 image={element.image}
                                 precioFinal={precioFinal(element.price, element.discount)}
                             />
@@ -39,7 +39,7 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
                     : products.map((element) => (
 
                         element.onSale
-                            ? <ItemOnSale
+                            ? <Item
                                 key={element.id}
                                 id={element.id}
                                 name={element.name}
@@ -47,6 +47,7 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
                                 stock={element.stock}
                                 discount={element.discount}
                                 image={element.image}
+                                onSale={element.onSale}
                                 precioFinal={precioFinal(element.price, element.discount)}
                             />
                             : null
