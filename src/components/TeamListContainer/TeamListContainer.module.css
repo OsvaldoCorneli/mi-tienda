@@ -2,10 +2,13 @@
 
 .container{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-   margin: 32px;
-   flex-direction: column;
+    margin: 16px 0;
+   width: 100%;
+   
 }
 
 
@@ -15,7 +18,8 @@
     padding: 16px;
     background-color: var(--thirdColor);
      color: var(--secundaryColor);
-     width: 175px;
+     width: 150px;
+     height: 285px;
     
 }
 
@@ -37,7 +41,12 @@
 
 .container{
     flex-direction: row;
+    flex-wrap: wrap;
    
+}
+
+.container1{
+     width: 175px;
 }
 
 
