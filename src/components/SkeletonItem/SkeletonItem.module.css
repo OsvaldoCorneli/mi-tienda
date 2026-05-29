@@ -1,0 +1,104 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 8px;
+    padding-block: 16px;
+
+}
+
+.h1c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 32px 0 0 0;
+}
+
+.h1c h1 {
+
+    width: 300px;
+    height: 40px;
+    background-color: #d4cdcd;
+    border: solid 3px var(--secundaryColor);
+
+}
+
+.card {
+    background-color: #ebe6e6;
+    border: solid 3px var(--secundaryColor);
+    width: 220px;
+    height: 360px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.shimmer{
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::before{
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -150%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+
+    animation: shimmer 1.5s infinite;
+}
+
+.image {
+    background-color: #d4cdcd;
+    width: 99.9%;
+    height: 250px;
+}
+
+.info {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.info h3 {
+
+    background-color: #d4cdcd;
+    margin-top: 16px;
+    height: 23px;
+    width: 80%;
+    border-radius: 5px;
+    align-self: center;
+}
+
+@keyframes shimmer {
+
+    100% {
+        left: 150%;
+    }
+
+}

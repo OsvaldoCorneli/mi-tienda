@@ -8,7 +8,7 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
     return (
         <>
             <h2>{mensaje}</h2>
-            <div className={ItemListCss.cardsConteiner}>
+            <div className={ItemListCss.cardsContainer}>
             {
                 !onSales
                     ? products.map((element) => (
