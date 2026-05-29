@@ -26,6 +26,7 @@
     max-width: 150px;
     min-width: 110px;
     height: 25vh;
+    max-height: 250px;
 }
 
 .info, .infoOnSale{

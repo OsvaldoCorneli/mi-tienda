@@ -51,8 +51,6 @@ useEffect(() => {
     
     }
 
-    console.log(loading)
-
     return (
         <>  
             {loading
