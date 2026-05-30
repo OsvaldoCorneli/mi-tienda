@@ -8,7 +8,7 @@ function ItemListContainer({mensaje, onSales}) {
     const [loading, setLoading] = useState(true);
 
 useEffect(() => {
-
+    window.scrollTo(0, 0);
     fetch("/data/products.json")
 
         .then((response) => {
@@ -28,7 +28,7 @@ useEffect(() => {
                 setProducts(data);
                 setLoading(false);
 
-            }, 3000);
+            }, 1000);
 
         })
 

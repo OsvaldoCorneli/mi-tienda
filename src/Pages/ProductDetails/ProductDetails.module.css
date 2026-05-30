@@ -1,0 +1,125 @@
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 16px 4px;
+    padding: 16px;
+    max-width: 540px;
+}
+
+.seccion_img{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px black;
+    padding: 16px;
+    border-radius: 5px;
+    background-color: white;
+    position: relative;
+    
+}
+
+.seccion_img p{
+    font-size: 1.2rem
+}
+
+.seccion_img img{
+
+    width: 90vw;
+    margin-bottom: 16px;
+    max-width: 400px;
+
+}
+
+.seccion_price, .seccion_price_onSale, .seccion_function{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--thirdColor);
+    color: white;
+
+}
+
+.seccion_price p{
+    font-size: 1.5rem;
+}
+
+.seccion_price_onSale p{
+    font-size: 1.2rem;
+    color: rgb(255, 91, 91);
+    text-decoration: line-through;
+}
+
+.seccion_img span{
+    color: white;
+    padding: 6px;
+    background-color: red;
+    font-weight: 1000;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.seccion_price div, .seccion_price_onSale div{
+    width: 100%;
+    display: flex;
+}
+
+.seccion_cantidad{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.seccion_cantidad select{
+    align-self: flex-end;
+    width: 60px;
+    height: 30px;
+}
+
+
+
+.seccion_button{
+    display: flex;
+    width: 100%;
+    padding: 16px;
+    margin: 16 0px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--thirdColor);
+}
+
+
+.seccion_button button{
+    width: 50%;
+    height: 60px;
+    margin: 16px;
+    padding: 16px;
+    background-color: var(--primaryColor);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.seccion_button button:hover{
+    background-color: var(--secundaryColor);
+}
+
+.seccion_price_onSale span{
+
+    color: var(--primaryColor);
+    font-size: 1.6rem;
+
+}

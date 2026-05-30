@@ -8,8 +8,8 @@ return(
 
 
   <>
-  <div className={`${SkeletonCss.h1c} ${SkeletonCss.shimmer}`}>
-        <h1></h1>
+  <div className={`${SkeletonCss.h1c} ${SkeletonCss.shimmer}`} >
+        <h1 ></h1>
   </div>
  <div className={SkeletonCss.container}>
 

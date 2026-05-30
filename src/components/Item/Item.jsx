@@ -5,7 +5,7 @@ import itemCss from './Item.module.css'
 function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) {
     return (
 
-        <Link className={itemCss.card}>
+        <Link className={itemCss.card} to={`/productos/${id.toLowerCase()}`}>
 
             <div className={itemCss.image}>
                 {image
