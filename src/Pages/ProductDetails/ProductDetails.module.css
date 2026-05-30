@@ -123,3 +123,33 @@ article{
     font-size: 1.6rem;
 
 }
+
+@media(min-width: 766px) {
+    article{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        max-width: 1020px;
+    }
+
+    section{
+        height: 500px;
+    }
+
+   .seccion_function{
+        height: 100vw;
+        max-height: 310px;
+
+    }
+
+    .seccion_button{
+        height: 50%;
+    }
+
+    .seccion_button button{
+        height: 80px;
+        padding: 0 5px;
+        margin: 4px;
+
+ }
+}
