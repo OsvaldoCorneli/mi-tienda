@@ -31,9 +31,12 @@ useEffect(() => {
 
 
    return (
+
+    
     <div className={TeamListContainerCSS.container}>
         {
-            teamList.length !== 0 ? (
+          !loading
+          ? teamList.length !== 0 ? (
                 teamList.map((element)=>(
                 <div key={element.id} className={TeamListContainerCSS.container1}>
                     <Team 
@@ -43,6 +46,7 @@ useEffect(() => {
                     />
                 </div>
             ))) : null
+            :null
         }
     </div>
 )

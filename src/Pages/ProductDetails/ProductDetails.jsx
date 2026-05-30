@@ -14,7 +14,7 @@ function ProductDetails() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        fetch('/public/data/products.json')
+        fetch('/data/products.json')
             .then((response) => {
 
                 if (!response.ok) {
@@ -26,19 +26,29 @@ function ProductDetails() {
             })
             .then((data) => {
 
-
-
                 const productoEncontrado = data.find(prod => prod.id === id.toUpperCase())
 
-                productoEncontrado != {} ? setProducto(productoEncontrado) : setProducto(null)
+                if(!productoEncontrado){
+                    setProducto(null)
+                    setProdSimilares([])
+                    setLoading(false)
+                }
 
                 const productosSimilares = data.filter(
                     prod => (prod.productType === productoEncontrado.productType) && (prod.id != productoEncontrado.id)
                 );
 
-                productosSimilares.length > 0 ? setProdSimilares(productosSimilares) : setProducto(null)
+                  
 
-                setCantidad(parseInt(productoEncontrado.stock))
+                setTimeout(() => {
+
+                    setProducto(productoEncontrado)
+                    setProdSimilares(productosSimilares)
+                    setLoading(false)
+
+                
+                }, 2000)
+
             })
             .catch((error) => {
 
@@ -47,10 +57,7 @@ function ProductDetails() {
 
             });
 
-
-
-
-    }, [])
+    }, [id])
 
 
     function calcularOferta(precio, descuento) {
@@ -61,11 +68,23 @@ function ProductDetails() {
 
     }
 
+    if(loading){
+        return <p>Cargando...</p>
+    }
+
+    if(!producto){
+        return <p>Producto no encontrado</p>
+    }
+
+    if(error){
+        return <span>{error}</span>
+    }
 
 
     return (
 
-        <article >
+        < article >
+
             <section className={ProductDetailsCss.seccion_img}>
                 <img src={producto.image} alt="" />
                 <p>{producto.description}</p>
@@ -112,8 +131,9 @@ function ProductDetails() {
                 </div>
             </section>
 
+        </article >
 
-        </article>
+
     )
 
 }

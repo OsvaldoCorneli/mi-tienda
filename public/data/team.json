@@ -3,30 +3,30 @@
     "id": "DEV-001",
     "name": "Lucas Fernández",
     "role": "Frontend Developer",
-    "image": "./imagen/fotoPerfil1.png"
+    "image": "/imagen/fotoPerfil1.png"
   },
   {
     "id": "DEV-002",
     "name": "Camila Rodríguez",
     "role": "UI/UX Designer",
-    "image": "./imagen/fotoPerfil2.png"
+    "image": "/imagen/fotoPerfil2.png"
   },
   {
     "id": "DEV-003",
     "name": "Mateo González",
     "role": "Backend Developer",
-    "image": "./imagen/fotoPerfil4.png"
+    "image": "/imagen/fotoPerfil4.png"
   },
   {
     "id": "DEV-004",
     "name": "Valentina Pérez",
     "role": "Product Manager",
-    "image": "./imagen/fotoPerfil3.png"
+    "image": "/imagen/fotoPerfil3.png"
   },
   {
     "id": "DEV-005",
     "name": "Santiago López",
     "role": "Product Owner",
-    "image": "./imagen/fotoPerfil5.png"
+    "image": "/imagen/fotoPerfil5.png"
   }
 ]
