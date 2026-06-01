@@ -1,10 +1,17 @@
+
+.all{
+    display: none;
+}
+@media(min-width: 769px) {
 .all {
     width: 100%;
-    background-color: var(--thirdColor);
+    background-color: var(--color-dark-bg);
     display: flex;
     align-items: center;
-    align-self: flex-end;
-    
+    align-self: center;
+    max-width: 1024px;
+    padding: 8px;
+
 }
 
 .ul {
@@ -14,19 +21,21 @@
     flex-direction: row;
     list-style: none;
     justify-content: space-around;
-    margin: 0.2%;
-    padding: 0.2%;
-    height: 100%;
+    /* margin: 0.2%; */
+    /* padding: 0.2%; */
+    height: auto;
 }
 
 .ul li a {
     text-decoration: none;
-    color: var(--primaryColor);
+    color: var( --color-primary);
     padding: 10px;
 
 }
 
 .ul li a:hover {
-    color: var(--secundaryColor);
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
 }
 
+}

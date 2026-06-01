@@ -1,22 +1,23 @@
-/* =========================
-   MOBILE
-   ========================= */
-
 @media (max-width: 766px){
 
-    .container{
+    .desktop, .mobile{
         display: flex;
         width: 100%;
         position: relative;
         padding: 0 8px;
+        
     }
 
-    .container input{
+    .mobile input{
         width: 100%;
-        height: 60px;
+        height: 40px;
         padding: 0 45px 0 12px;
         border: 1px solid gray;
-        border-radius: 8px;
+        border-radius: 5px;
+    }
+
+    .desktop{
+        display: none;
     }
 
     .searchIcon{
@@ -33,28 +34,31 @@
 }
 
 
-
-/* =========================
-   TABLET / SMALL DESKTOP
-   ========================= */
-
 @media (min-width: 767px){
 
-    .container{
+    .desktop{
         display: flex;
         width: 100%;
         position: relative;
+        margin: 0 16px;
     }
 
-    .container input{
+
+    .desktop input{
         width: 100%;
         height: 40px;
         padding: 0 45px 0 12px;
-        margin: 8px;
+        margin: 2px;
         border: 1px solid gray;
-        border-radius: 8px;
+        border-radius: 5px;
+        
     }
 
+    .mobile{
+        display: none;
+    }
+
+    
     .searchIcon{
         position: absolute;
         right: 20px;

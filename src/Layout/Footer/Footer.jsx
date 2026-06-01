@@ -1,4 +1,4 @@
-import imageFooter from "../../../public/imagen/tiendamaslogo.png"
+import imageFooter from "/imagen/tiendamaslogo.png"
 import TeamListContainer from "../../components/TeamListContainer/TeamListContainer";
 import footerCss from "./Footer.module.css"
 

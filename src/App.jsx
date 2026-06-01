@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import "./App.css"
-import Layout from "./Layout/Layout";
+import Layout from "./layout/Layout";
 import { Route, Routes } from "react-router-dom";
-import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 function App() {
 
@@ -27,10 +27,7 @@ function App() {
         </Route>
 
       </Routes>
-    
-      {/* <Layout>
-        <ItemListContainer/>
-      </Layout> */}
+  
 
 
     </>
