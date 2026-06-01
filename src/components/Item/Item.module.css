@@ -1,90 +1,106 @@
-.card {
-
-    border: solid 1px var(--secundaryColor);
-    width: 220px;
-    height: 360px;
-    margin: 16px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    text-decoration: none;
-    color: black;
+.item_card{
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 75%;
+height: 420px;
+background-color: white;
+padding: 16px 8px;
+border: 1px solid rgba(191, 187, 187, 0.5);
+border-radius: 5px;
+text-decoration: none;
+position: relative;
+ max-width: 270px;
 
 }
 
-.card:hover {
-
+.item_card:hover{
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19);
+}
+
+.item_card section{
+
+display: flex;
+justify-content: center;
 
 }
 
-.image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 99.9%;
-    height: 358px;
-    background-color: white;
-    max-height: 250px;
-    max-width: 220px;
+.item_card section img{
+
+    width: 175px;
+    height: 175px;
+    margin: 16px 8px;
+
 }
 
-.image img {
-    width: 15vw;
-    max-width: 150px;
-    min-width: 110px;
-    height: 25vh;
-    max-height: 250px;
-}
-
-.info,
-.infoOnSale {
-
+.card_info, .card_info_onSale{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 16px;
-    text-align: center;
 }
 
-.price {
-    margin: 8px
+
+
+.card_info p, .card_info_onSale p{
+
+    color: black;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 1000;
+    margin-bottom: 12px;
 }
 
-.stock {
-    color: white;
-    text-align: center;
-    padding: 6px;
-    background-color: rgb(220, 144, 2);
-    font-weight: 500;
-    width: 125px;
+.span_off{
+
     position: absolute;
-    top: 224px;
-    right: 45px;
-    border-radius: 5px;
+    left: 0;
+    top: 0;
+    padding: 8px 16px 8px 12px;
+    color: white;
+    background-color: var(--color-accent);
+    border-top-left-radius: 5px;
+    font-weight: 1000;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+    width: fit-content;
 }
 
-.infoOnsale {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 16px;
-    text-align: center;
+.card_info span, .card_info_onSale span{
+
+    color: var(--color-accent);
+    font-size: 1.6rem;
+    font-weight: bold;
+
 }
 
-.infoOnSale h4 {
-    color: rgba(255, 32, 32, 0.958);
+.not_price{
+    font-size: 1.2rem;
+    color: rgba(83, 74, 255, 0.615);
     text-decoration: line-through;
 }
 
-.off {
-    color: white;
-    padding: 6px;
-    background-color: red;
-    font-weight: 1000;
-    width: 75px;
+
+.stock{
+     color: rgba(133, 100, 4, 1);
+    text-align: center;
+    padding: 4px 8px;
+    margin: 8px 0;
+    background-color: rgba(255, 243, 205, 1);
+    font-weight: 500;
+    width: 80%;
+    border-radius: 5px;
     position: absolute;
-    top: 0;
-    right: 0;
+    bottom: 60px;
 }
+
+.item_card a{
+    
+    text-decoration: none;
+    width: 90%;
+    background-color: var(--color-accent);
+    text-align: center;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+

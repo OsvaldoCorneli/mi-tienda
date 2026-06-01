@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import itemCss from './Item.module.css'
+import style from './Item.module.css'
 
 
 function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) {
     return (
 
-        <Link className={itemCss.card} to={`/productos/${id.toLowerCase()}`}>
+        <Link className={style.item_card} to={`/productos/${id.toLowerCase()}`}>
 
-            <div className={itemCss.image}>
+            <section >
                 {image
                     ?
                     <img
@@ -18,35 +18,37 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
                         src='https://www.shannonfj.com/wp-content/themes/divide-3.3/media/product-placeholder.jpg'
 
                     />}
-            </div>
+            </section>
 
 
             {!onSale
-                ? <div className={itemCss.info}>
-                    <h3 className={itemCss.name}>{name}</h3>
-                    <h3 className={itemCss.price}>{`$${price}`}</h3>
-                </div>
-                : <div className={itemCss.infoOnSale}>
-                    <h3>{name}</h3>
-                    <h4>{`$${price}`}</h4>
-                    <h3>{`$${precioFinal}`}</h3>
+                ? <section className={style.card_info}>
+                    <p className={style.name}>{name}</p>
+                    <span className={style.price}>{`$${price}`}</span>
+                </section>
+                : <section className={style.card_info_onSale}>
+                    <p>{name}</p>
+                    <div className={style.not_price}>{`$${price}`}</div>
+                    <span>{`$${precioFinal}`}</span>
 
-                </div>
+                </section>
 
 
 
             }
 
-            {onSale && <span className={itemCss.off}>
+            {onSale && <span className={style.span_off}>
                 {`${discount}% OFF `}
             </span>}
 
             {stock <= 5 && stock > 1
-                ? <span className={itemCss.stock}>{`⚠️Quedan ${stock}⚠️`}</span>
+                ? <span className={style.stock}>{`⚠️¡Últimas ${stock} unidades!`}</span>
                 : stock == 1
-                    ? <span className={itemCss.stock}>{`⚠️¡Ultimo!⚠️`}</span>
-                    : null
+                    ? <span className={style.stock}>{`⚠️¡Última unidad!⚠️`}</span>
+                    : <span className={style.stock_vacio}></span>
             }
+
+            <a href="">Agregar al Carrito</a>
 
         </Link>
     )
