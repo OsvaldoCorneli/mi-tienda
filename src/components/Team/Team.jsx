@@ -1,15 +1,22 @@
-import TeamCss from "./Team.module.css"
+import style from "./Team.module.css"
 
 
-function Team({name,role,image}){
-   
-    return(
+function Team({ name, role, image }) {
+
+    return (
         <>
-            <h4>{name}</h4>
-            <img src={image} alt="" />
-            <h4>{role}</h4>
+            <div className={style.img_info}>
 
-       </>
+                <img src={image} alt="" />
+
+            </div>
+            <div className={style.employed_info}>
+
+            <h4>{name}</h4>
+            <h5>{role}</h5>
+
+            </div>
+        </>
 
 
 

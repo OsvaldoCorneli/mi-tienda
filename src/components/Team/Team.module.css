@@ -1,5 +1,16 @@
 
 .container img{
     width: 100px;
+    
+}
 
+.employed_info{
+    color: black;
+    font-size: 1.2rem;
+}
+
+.img_info{
+    align-self: start;
+    justify-content: flex-start;
+    width: 40%;
 }
