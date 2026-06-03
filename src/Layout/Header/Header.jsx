@@ -6,8 +6,6 @@ import { faCartShopping, faUser, faBell, faBars } from '@fortawesome/free-solid-
 import SearchBar from "../SearchBar/SearchBar";
 
 function Header() {
-
-    console.log(style)
     return (
 
         <>

@@ -48,7 +48,15 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
                     : <span className={style.stock_vacio}></span>
             }
 
-            <a href="">Agregar al Carrito</a>
+            <button
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                }}
+            >
+                Agregar al carrito
+            </button>
 
         </Link>
     )
