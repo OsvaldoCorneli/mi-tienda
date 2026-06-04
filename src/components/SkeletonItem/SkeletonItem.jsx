@@ -1,14 +1,12 @@
 import style from './SkeletonItem.module.css'
 function SkeletonItem() {
-    
+
     return (
 
         <div className={`${style.card} ${style.shimmer}`} >
 
             <div className={style.image}>
-                
             </div>
-
 
             <div className={style.info} >
                 <span></span>

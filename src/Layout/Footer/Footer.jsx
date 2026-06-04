@@ -1,4 +1,3 @@
-import imageFooter from "/imagen/tiendamaslogo.png"
 import TeamListContainer from "../../components/TeamListContainer/TeamListContainer";
 import style from "./Footer.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Team from "../Team/Team"
-import TeamListContainerCSS from "./TeamListContainer.module.css"
+import style from "./TeamListContainer.module.css"
 
 function TeamListContainer() {
 
@@ -33,12 +33,12 @@ useEffect(() => {
    return (
 
     
-    <div className={TeamListContainerCSS.container}>
+    <div className={style.container}>
         {
           !loading
           ? teamList.length !== 0 ? (
                 teamList.map((element)=>(
-                <div key={element.id} className={TeamListContainerCSS.container1}>
+                <div key={element.id} className={style.container1}>
                     <Team 
                     name={element.name}
                     role={element.role}

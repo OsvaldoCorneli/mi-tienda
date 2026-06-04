@@ -1,5 +1,5 @@
 import Item from "../Item/Item";
-import ItemListCss from "./ItemList.module.css"
+import style from "./ItemList.module.css"
 function ItemList({ products, onSales, mensaje, stock ,precioFinal, formatearPrecio}) {
 
 
@@ -8,7 +8,7 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal, formatearPre
     return (
         <>
             <h2>{mensaje}</h2>
-            <article className={ItemListCss.cardsContainer}>
+            <article className={style.cards_container}>
             {
                 !onSales
                     ? products.map((element) => (

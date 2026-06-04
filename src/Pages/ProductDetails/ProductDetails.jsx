@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductDetailsCss from './ProductDetails.module.css'
+import style from './ProductDetails.module.css'
 
 
 
@@ -85,7 +85,7 @@ function ProductDetails() {
 
         < article >
 
-            <section className={ProductDetailsCss.seccion_img}>
+            <section className={style.seccion_img}>
                 <img src={producto.image} alt="" />
                 <p>{producto.description}</p>
                 {producto.onSale
@@ -96,11 +96,11 @@ function ProductDetails() {
             <section>
                 {
                     !producto.onSale
-                        ? <div className={ProductDetailsCss.seccion_price}>
+                        ? <div className={style.seccion_price}>
                             <h2>{producto.name}</h2>
                             <p>{`$${producto.price}`}</p>
                         </div>
-                        : <div className={ProductDetailsCss.seccion_price_onSale}>
+                        : <div className={style.seccion_price_onSale}>
                             <h2>{producto.name}</h2>
                             <p>{`$${producto.price}`}</p>
                             <span>{`$${calcularOferta(producto.price, producto.discount)}`}</span>
@@ -108,8 +108,8 @@ function ProductDetails() {
 
                 }
 
-                <div className={ProductDetailsCss.seccion_function}>
-                    <div className={ProductDetailsCss.seccion_cantidad}>
+                <div className={style.seccion_function}>
+                    <div className={style.seccion_cantidad}>
                         <p>{`Stock: ${producto.stock}`}</p>
                         <div>
                             <p>Cantidad:</p>
@@ -124,7 +124,7 @@ function ProductDetails() {
                         </div>
 
                     </div>
-                    <div className={ProductDetailsCss.seccion_button}>
+                    <div className={style.seccion_button}>
                         <button>Agregar al carrito</button>
                         <button>Comprar</button>
                     </div>
