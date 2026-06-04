@@ -5,7 +5,7 @@ footer{
     width: 100%;
     margin: 32px 0 0 0;
     background-color: var(--color-dark-bg);
-    color: var(--color-light-bg);
+    color: var(--color-primary);
     padding: 32px 0 8px 0;
 }    
 
@@ -26,7 +26,7 @@ footer{
 
     text-align: center;
     background-color: var(--color-dark-bg);
-    color: white;
+    color: var(--color-primary);
     width: 100%;
 
 }
@@ -48,6 +48,11 @@ footer{
 .info_text{
     text-align: center;
     padding: 8px;
+}
+
+.info_icons{
+    font-size: 20px;
+    margin-right: 8px;
 }
 
 @media(min-width: 766px) {
@@ -89,5 +94,11 @@ footer{
 .team_container{
    height: auto;
     
+}
+
+.redes_icons{
+    width: 4rem;
+    font-size: 30px;
+    margin-top: 8px;
 }
 }

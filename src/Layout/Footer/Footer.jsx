@@ -1,6 +1,10 @@
 import imageFooter from "/imagen/tiendamaslogo.png"
 import TeamListContainer from "../../components/TeamListContainer/TeamListContainer";
 import style from "./Footer.module.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook, faSquareXTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+
 
 function Footer() {
     return (
@@ -32,20 +36,23 @@ function Footer() {
                 </div>
                 <div>
                     <h4>Seguinos</h4>
+                    <FontAwesomeIcon className={style.redes_icons} icon={faFacebook} />
+                    <FontAwesomeIcon className={style.redes_icons} icon={faSquareXTwitter} />
+                    <FontAwesomeIcon className={style.redes_icons} icon={faInstagram} />
                 </div>
                 <div>
-                <h4 >contactanos</h4>
-                <ul>
-                    <li>info@mitienda.com</li>
-                    <li>+52 34 5678 1239</li>
-                </ul>
-            </div>
+                    <h4 >contactanos</h4>
+                    <ul>
+                       <li><FontAwesomeIcon className={style.info_icons} icon={faEnvelope} /> info@mitienda.com</li>
+                       <li><FontAwesomeIcon className={style.info_icons} icon={faPhone} />+52 34 5678 1239</li>
+                    </ul>
+                </div>
             </section>
             <div className={style.info_contacto}>
                 <h4 >contactanos</h4>
                 <ul>
-                    <li>info@mitienda.com</li>
-                    <li>+52 34 5678 1239</li>
+                    <li> <FontAwesomeIcon className={style.info_icons} icon={faEnvelope} /> info@mitienda.com</li>
+                    <li><FontAwesomeIcon className={style.info_icons} icon={faPhone} /> +52 34 5678 1239</li>
                 </ul>
             </div>
 

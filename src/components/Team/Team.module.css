@@ -5,7 +5,7 @@
 }
 
 .employed_info{
-    color: black;
+    color: var(--color-dark-bg);
     font-size: 1.2rem;
 }
 
