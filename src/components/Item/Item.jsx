@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom';
 import style from './Item.module.css'
-
+import { useState } from 'react';
+import { useCart } from '../../context/CartContext';
 
 function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) {
+    
+    const producto = { id, name, precioFinal, price, discount, image, stock, onSale };
+    const [cantidad, setCantidad] = useState(0);
+
+    const { addToCart } = useCart();
+    
+    const handleAddToCart = () => {
+        addToCart(producto, cantidad);
+        alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
+    };
+
     return (
 
         <Link className={style.item_card} to={`/productos/${id.toLowerCase()}`}>

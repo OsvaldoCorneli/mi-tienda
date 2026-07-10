@@ -17,7 +17,7 @@ function Header() {
                     {/* <FontAwesomeIcon icon={faUser} /> */}
                     <a className={style.other_icon}><FontAwesomeIcon  icon={faUser} /></a>
                     <a className={style.other_icon} ><FontAwesomeIcon icon={faBell} /></a>
-                    <a className={style.mobile_icon} ><FontAwesomeIcon icon={faCartShopping} /></a>
+                    <Link to="/carrito"className={style.mobile_icon} ><FontAwesomeIcon icon={faCartShopping} /></Link>
                 </section>
                 <SearchBar prop={true}/>
                <Nav/>
