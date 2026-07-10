@@ -6,13 +6,13 @@ import { useCart } from '../../context/CartContext';
 function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) {
     
     const producto = { id, name, precioFinal, price, discount, image, stock, onSale };
-    const [cantidad, setCantidad] = useState(0);
+    const [cantidad, setCantidad] = useState(1);
 
     const { addToCart } = useCart();
     
     const handleAddToCart = () => {
         addToCart(producto, cantidad);
-        alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
+        alert(`Agregaste el producto ${name} al carrito.`);
     };
 
     return (
@@ -64,7 +64,7 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
                 onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-
+                    handleAddToCart()
                 }}
             >
                 Agregar al carrito
