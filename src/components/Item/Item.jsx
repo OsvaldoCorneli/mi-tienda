@@ -8,7 +8,7 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
     const producto = { id, name, precioFinal, price, discount, image, stock, onSale };
     const [cantidad, setCantidad] = useState(1);
 
-    const { addToCart } = useCart();
+    const { addToCart , getCantidadActual} = useCart();
     
     const handleAddToCart = () => {
         addToCart(producto, cantidad);
@@ -69,7 +69,6 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
             >
                 Agregar al carrito
             </button>
-
         </Link>
     )
 
