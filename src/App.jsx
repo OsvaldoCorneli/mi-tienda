@@ -3,8 +3,8 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer.
 import "./App.css"
 import Layout from "./components/Layout/Layout.jsx"
 import { Route, Routes } from "react-router-dom";
-import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
-import Cart from "./pages/Cart/Cart.jsx";
+import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
+import Cart from "./components/Cart/Cart.jsx";
 import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin.jsx";
 
 function App() {
