@@ -1,3 +1,5 @@
+//ESTE ES UN COMPONENTE QUE SE CREO DE DEMOSTRACION EN EL CURSO PERO NO LO UTILIZO EN EL PROYECTO
+
 import React, { useState, useEffect } from 'react';
 // Importaciones clave de Firebase
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
