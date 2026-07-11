@@ -2,24 +2,28 @@
 
 .container{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     margin: 16px 0;
-   width: 100%;
+    width: 100%;
+    max-width: 310px;
    
 }
 
 
 .container1{
-    border: solid 1px black;
+    display: flex;
     margin: 8px;
     padding: 16px;
     background-color: var(--thirdColor);
      color: var(--secundaryColor);
      width: 150px;
-     height: 285px;
+     height: auto;
+     width: 100%;
+     background-color: white;
+     justify-content: center;
+     align-items: center;
     
 }
 
@@ -32,23 +36,31 @@
 }
 
 .container1 h4{
-    margin: 5px 0 16px 0;
+    margin: 2px 0 8px 0;
 
 
 }
+
+
 
 @media (min-width: 766px){
 
 .container{
     flex-direction: row;
     flex-wrap: wrap;
-   
+    width: 100%;
+   max-width: 766px;
+   color: black;
 }
 
 .container1{
-     width: 175px;
+    flex-direction: column;
+    width: 40%;
+    text-align: center;
+    max-width: 125px;
+    height: 245px;
+    
 }
-
 
     
 }

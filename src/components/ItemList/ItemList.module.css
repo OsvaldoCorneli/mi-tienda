@@ -1,4 +1,4 @@
-.cardsContainer{
+.cards_container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

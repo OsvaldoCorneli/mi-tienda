@@ -1,52 +1,104 @@
-.container{
-   background-color: var(--secundaryColor);
-    width: 100%;
-    
-}
-
-
-
-
-.container1{
-   
-    justify-content: space-evenly;
+footer{
     display: flex;
     flex-direction: column;
-    margin: 32px 0 0;
-    padding: 32px;
-    display: flex;
-    width: 100%;
-    
-
-}
-.container2{
-    display: flex;
-    flex-direction: column-reverse;
-    text-align: center;
-    justify-content: center;
     align-items: center;
-}
-.container3{
-    text-align: center;
-    justify-content: center;
+    width: 100%;
+    margin: 32px 0 0 0;
+    background-color: var(--color-dark-bg);
+    color: var(--color-primary);
+    padding: 32px 0 8px 0;
+}    
+
+
+.team_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
     
 }
 
-.Logoimg{
-    width: 300px;
+.informacion_container{
+    display: none;
 }
 
-@media(min-width: 780px){
+.info_contacto{
 
-    .container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    text-align: center;
+    background-color: var(--color-dark-bg);
+    color: var(--color-primary);
+    width: 100%;
 
-    .container1{
-        max-width: 1024px;
-    }
+}
 
 
+.info_contacto h4{
+
+    text-align: center;
+    margin: 12px ;
+
+
+}
+
+.info_contacto ul li{
+    margin: 8px;
+    list-style: none;
+}
+
+.info_text{
+    text-align: center;
+    padding: 8px;
+}
+
+.info_icons{
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+@media(min-width: 766px) {
+    
+.info_contacto{
+    display: none;
+}
+
+.informacion_container{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    text-align: start;
+    align-items: flex-start;
+    width: 75%;
+    max-width: 1024px;
+    height: auto;
+}
+
+.informacion_container ul{
+        list-style: none;
+        margin: 12px;
+        width: 100%;
+}
+
+.informacion_container ul li{
+
+    margin: 8px;
+
+}
+
+.info_text{
+    width: 100%;
+    padding: 8px;
+    height: auto;
+    margin-top: 16px;
+}
+
+.team_container{
+   height: auto;
+    
+}
+
+.redes_icons{
+    width: 4rem;
+    font-size: 30px;
+    margin-top: 8px;
+}
 }

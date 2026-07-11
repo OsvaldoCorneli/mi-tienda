@@ -1,6 +1,6 @@
 import Item from "../Item/Item";
-import ItemListCss from "./ItemList.module.css"
-function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
+import style from "./ItemList.module.css"
+function ItemList({ products, onSales, mensaje, stock ,precioFinal, formatearPrecio}) {
 
 
    
@@ -8,7 +8,7 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
     return (
         <>
             <h2>{mensaje}</h2>
-            <div className={ItemListCss.cardsContainer}>
+            <article className={style.cards_container}>
             {
                 !onSales
                     ? products.map((element) => (
@@ -17,18 +17,18 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
                                 key={element.id}
                                 id={element.id}
                                 name={element.name}
-                                price={element.price}
+                                price={formatearPrecio(element.price)}
                                 stock={element.stock}
                                 discount={element.discount}
                                 onSale={element.onSale}
                                 image={element.image}
-                                precioFinal={precioFinal(element.price, element.discount)}
+                                precioFinal={formatearPrecio(precioFinal(element.price, element.discount))}
                             />
                             :  <Item
                             key={element.id}
                             id={element.id}
                             name={element.name}
-                            price={element.price}
+                            price={formatearPrecio(element.price)}
                             stock={element.stock}
                             onSale={element.onSale}
                             discount={element.discount}
@@ -43,17 +43,17 @@ function ItemList({ products, onSales, mensaje, stock ,precioFinal}) {
                                 key={element.id}
                                 id={element.id}
                                 name={element.name}
-                                price={element.price}
+                                price={formatearPrecio(element.price)}
                                 stock={element.stock}
                                 discount={element.discount}
                                 image={element.image}
                                 onSale={element.onSale}
-                                precioFinal={precioFinal(element.price, element.discount)}
+                                precioFinal={formatearPrecio(precioFinal(element.price, element.discount))}
                             />
                             : null
                     ))
             }
-            </div>
+            </article>
         </>
     )
 

@@ -2,12 +2,12 @@
 
 
 :root{
---primaryColor: #f2f0ef;
---secundaryColor: #bbbdbc;
---thirdColor: #245f73;
---fourthColor: #733e24;
---hoverColor: #86e0fe;
---textFont: "Roboto", sans-serif
+ --color-dark-bg: #0F172A;
+  --color-primary: #38BDF8;
+  --color-light-bg: #F3F4F6;
+  --color-text: #FFFFFF;
+  --color-accent: #2563EB;
+  --text-Font: "Roboto", sans-serif
 }
 
 * {

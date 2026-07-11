@@ -1,20 +1,19 @@
-import skeletonCss from './SkeletonItem.module.css'
+import style from './SkeletonItem.module.css'
 function SkeletonItem() {
-    
+
     return (
 
-        <div className={`${skeletonCss.card} ${skeletonCss.shimmer}`} >
+        <div className={`${style.card} ${style.shimmer}`} >
 
-            <div className={skeletonCss.image}>
-                
+            <div className={style.image}>
             </div>
 
-
-            <div className={skeletonCss.info} >
-                <h3>  </h3>
-                <h3>    </h3>
+            <div className={style.info} >
+                <span></span>
+                <span></span>
             </div>
 
+            <span className={style.button_sk}></span>
 
         </div>
 
