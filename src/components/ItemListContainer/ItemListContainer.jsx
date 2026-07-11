@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import SkeletonContainer from "../SkeletonContainer/SkeletonContainer";
+import ItemList from "../ItemList/ItemList.jsx";
+import SkeletonContainer from "../SkeletonContainer/SkeletonContainer.jsx";
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { db } from '../../firebase/config.js';
 function ItemListContainer({ mensaje, onSales }) {
 
     const [products, setProducts] = useState([]);

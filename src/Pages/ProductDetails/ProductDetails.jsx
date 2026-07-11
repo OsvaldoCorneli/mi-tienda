@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
-import { db } from '../../firebase/config';
+import { db } from '../../firebase/config.js';
 import style from './ProductDetails.module.css'
 
 

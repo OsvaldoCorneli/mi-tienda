@@ -1,4 +1,4 @@
-import SkeletonItem from "../SkeletonItem/SkeletonItem";
+import SkeletonItem from "../SkeletonItem/SkeletonItem.jsx";
 import style from "../SkeletonItem/SkeletonItem.module.css"
 function SkeletonContainer() {
 

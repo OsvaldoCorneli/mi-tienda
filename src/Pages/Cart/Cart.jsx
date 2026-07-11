@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCart } from '../../context/CartContext'; // 1. Importamos el hook
+import { useCart } from '../../context/CartContext.jsx'; // 1. Importamos el hook
 import { Link } from 'react-router-dom';
 const Cart = () => {
 
