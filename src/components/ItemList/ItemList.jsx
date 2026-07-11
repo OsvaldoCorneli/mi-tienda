@@ -1,4 +1,4 @@
-import Item from "../Item/Item";
+import Item from "../Item/Item.jsx";
 import style from "./ItemList.module.css"
 function ItemList({ products, onSales, mensaje, stock ,precioFinal, formatearPrecio}) {
 

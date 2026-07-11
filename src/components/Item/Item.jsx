@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import style from './Item.module.css'
 import { useState } from 'react';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../context/CartContext.jsx';
 
 function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) {
     

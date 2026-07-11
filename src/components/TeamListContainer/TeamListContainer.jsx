@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Team from "../Team/Team"
+import Team from "../Team/Team.jsx"
 import style from "./TeamListContainer.module.css"
 
 function TeamListContainer() {

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 // Importaciones clave de Firebase
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { db } from '../../firebase/config.js';
 
 
 function ProductosDB() {

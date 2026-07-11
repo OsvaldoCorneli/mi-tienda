@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import HeaderAdmin from "./HeaderAdmin/HeaderAdmin";
+import HeaderAdmin from "./HeaderAdmin/HeaderAdmin.jsx";
 
 function LayoutAdmin(){
     

@@ -1,4 +1,4 @@
-import NavAdmin from "../NavAdmin/NavAdmin";
+import NavAdmin from "../NavAdmin/NavAdmin.jsx";
 
 const HeaderAdmin = () => {
 

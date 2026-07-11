@@ -1,9 +1,9 @@
-import Nav from "../Nav/Nav";
+import Nav from "../Nav/Nav.jsx";
 import { Link } from "react-router-dom";
 import style from "./Header.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faUser, faBell, faBars } from '@fortawesome/free-solid-svg-icons'
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar.jsx";
 
 function Header() {
     return (
