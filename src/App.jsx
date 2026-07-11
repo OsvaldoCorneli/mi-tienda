@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer.jsx";
 import "./App.css"
-import Layout from "./layout/Layout.jsx";
+import Layout from "./components/Layout/Layout.jsx"
 import { Route, Routes } from "react-router-dom";
 import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
-import LayoutAdmin from "./layoutadmin/LayoutAdmin.jsx";
+import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin.jsx";
 
 function App() {
 

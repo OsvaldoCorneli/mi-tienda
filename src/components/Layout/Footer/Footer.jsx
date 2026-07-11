@@ -1,4 +1,4 @@
-import TeamListContainer from "../../components/TeamListContainer/TeamListContainer.jsx";
+import TeamListContainer from "../../TeamListContainer/TeamListContainer.jsx";
 import style from "./Footer.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
