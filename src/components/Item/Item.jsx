@@ -15,9 +15,10 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
         alert(`Agregaste el producto ${name} al carrito.`);
     };
 
+
     return (
 
-        <Link className={style.item_card} to={`/productos/${id.toLowerCase()}`}>
+        <Link className={style.item_card} to={`/productos/${id}`}>
 
             <section >
                 {image

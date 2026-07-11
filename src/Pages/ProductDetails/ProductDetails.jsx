@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from '../../firebase/config';
 import style from './ProductDetails.module.css'
 
@@ -15,53 +15,57 @@ function ProductDetails() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-        fetch('/data/products.json')
-            .then((response) => {
+    window.scrollTo(0, 0);
+    setLoading(true); // Acordate de resetear el loading si cambias de ID
 
-                if (!response.ok) {
-                    throw new Error("No se pudo cargar los productos");
-                }
+    const docRef = doc(db, "productos", id);
+    
+    getDoc(docRef)
+        .then((resp) => {
+            if (resp.exists()) {
+                const productoData = resp.data();
+                // 1. Guardamos el producto principal con su ID
+                setProducto({ ...productoData, id: resp.id });
 
-                return response.json()
-
-            })
-            .then((data) => {
-
-                const productoEncontrado = data.find(prod => prod.id === id.toUpperCase())
-
-                if(!productoEncontrado){
-                    setProducto(null)
-                    setProdSimilares([])
-                    setLoading(false)
-                }
-
-                const productosSimilares = data.filter(
-                    prod => (prod.productType === productoEncontrado.productType) && (prod.id != productoEncontrado.id)
+                // 2. Buscamos los similares en Firebase usando la categoría de este producto
+                const productosRef = collection(db, "productos");
+                // Armamos la query: "Traeme los que tengan la misma categoría, pero que NO sean el mismo producto"
+                const q = query(
+                    productosRef, 
+                    where("category", "==", productoData.category)
                 );
 
-                  
-
-                setTimeout(() => {
-
-                    setProducto(productoEncontrado)
-                    setProdSimilares(productosSimilares)
-                    setLoading(false)
-
-                
-                }, 2000)
-
-            })
-            .catch((error) => {
-
-                setError(error.message);
+                return getDocs(q); // Le pasamos la posta al siguiente .then
+            } else {
+                setProducto(null);
+                setProdSimilares([]); // Si no hay producto, no hay similares
                 setLoading(false);
+            }
+        })
+        .then((querySnapshot) => {
+            // Este .then maneja la respuesta de los productos similares
+            if (querySnapshot) {
+                const similares = [];
+                querySnapshot.forEach((doc) => {
+                    // Opcional: Evitá que el producto actual aparezca en la lista de similares
+                    if (doc.id !== id) {
+                        similares.push({ ...doc.data(), id: doc.id });
+                    }
+                });
+                
+                // Guardamos el array de productos similares en tu estado (que debería inicializar como [])
+                setProdSimilares(similares);
+                setLoading(false);
+            }
+        })
+        .catch(error => {
+            console.error("Error cargando datos:", error);
+            setLoading(false);
+        });
 
-            });
+}, [id]);
 
-    }, [id])
-
-
+    
     function calcularOferta(precio, descuento) {
 
         const precioConDescuento = parseInt(precio - (precio * descuento) / 100)
@@ -70,15 +74,15 @@ function ProductDetails() {
 
     }
 
-    if(loading){
+    if (loading) {
         return <p>Cargando...</p>
     }
 
-    if(!producto){
+    if (!producto) {
         return <p>Producto no encontrado</p>
     }
 
-    if(error){
+    if (error) {
         return <span>{error}</span>
     }
 
