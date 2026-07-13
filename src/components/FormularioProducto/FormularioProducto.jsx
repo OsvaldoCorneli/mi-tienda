@@ -23,11 +23,20 @@ const FormularioProductos = ({
         : <h2>Nuevo Producto</h2>
 
       }
-      {
-        edit
-          ? <img src={product.image} alt={product.name} style={{ width: "200px", justifySelf: "center", alignSelf: "center", margin: "32px 0" }} />
-          : null
-      }
+      
+        {
+          product.image && (
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{ width: "200px", 
+                justifySelf: "center", 
+                alignSelf: "center", 
+                margin: "32px 0" }}
+            />
+          )
+        }
+      
       <label>Nombre</label>
       <input
         type="text"
