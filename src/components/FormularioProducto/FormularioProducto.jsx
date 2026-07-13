@@ -5,19 +5,22 @@ const FormularioProductos = ({
   product,
   handleChange,
   handleSubmit,
+  handleEdit,
+  edit,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Nuevo Producto</h2>
+    <form onSubmit={edit ? handleEdit : handleSubmit}>
 
-      <label>ID</label>
-      <input
-        type="text"
-        name="id"
-        value={product.id}
-        onChange={handleChange}
-      />
+      {edit
+        ? <h2>Editar Producto</h2>
+        : <h2>Nuevo Producto</h2>
 
+      }
+      {
+        edit
+          ? <img src={product.image} alt={product.name} style={{ width: "200px", justifySelf: "center", alignSelf: "center", margin: "32px 0" }} />
+          : null
+      }
       <label>Nombre</label>
       <input
         type="text"
@@ -135,8 +138,12 @@ const FormularioProductos = ({
         />
         Destacado
       </label>
+      {
+        !edit
+          ? <button type="submit">Guardar Producto</button>
+          : <button type="submit">Editar Producto</button>
+      }
 
-      <button type="submit">Guardar Producto</button>
     </form>
   );
 };

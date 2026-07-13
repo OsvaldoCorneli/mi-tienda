@@ -37,9 +37,9 @@ function App() {
 
           <Route element={<LayoutAdmin/>}>
             <Route path="/admin"  element={<h2>Bienvenido</h2>}/>
-            <Route path="/admin/nuevoproducto" element={<FormularioContainer/>}/>
+            <Route path="/admin/nuevoproducto" element={<FormularioContainer edit={false}/>}/>
             <Route path="/admin/productos" element={<AdminItemContainer/>}/>
-            <Route path="/admin/productos/:id" element={<h2>Formulario actualizar producto</h2>}/>
+            <Route path="/admin/productos/:id" element={<FormularioContainer edit={true}/>}/>
             
           </Route>
 

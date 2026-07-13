@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./AdminItem.module.css"
 
 
@@ -13,7 +14,7 @@ function AdminItem({ name, image, stock, price, onSale, id, category,handleDelet
                 </div>
                 <div className={style.card_admin_container2}>
                     <div className={style.card_admin_container2_1}>
-                        <a href="">editar..</a>
+                        <Link to={`/admin/productos/${id}`}>editar</Link>
                         <button onClick={()=> handleDelete(id)}>Eliminar</button>
                     </div>
                     <div className={style.card_admin_container2_2}>
