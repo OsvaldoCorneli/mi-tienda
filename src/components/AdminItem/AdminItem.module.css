@@ -1,0 +1,64 @@
+.card_admin{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 30vh;
+    border: solid 2px black;
+    justify-content: space-evenly;
+    background-color: white;
+    margin: 16px 0 0 0;
+    max-width: 355px;
+    max-height: 195px;
+}
+
+.card_admin img{
+    width: 100px;
+    height: 100px;
+    
+    margin-right: 8px;
+}
+
+.card_admin_container1{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_admin_container2{
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.card_admin_container2_1{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+}
+
+/* CORREGIDO: Sin la palabra 'style' al inicio */
+.card_admin_container2_2 h4 {
+  display: inline-block;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  width: 100%;
+}
+
+.card_admin_container2_2 p {
+
+    margin-bottom: 4px;
+
+}
+
+.card_admin_container2_2 h6 {
+  display: flex;
+  justify-self: end;
+  align-self: flex-end;
+  margin-right: 16px
+}
