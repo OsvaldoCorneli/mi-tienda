@@ -7,6 +7,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
 import Cart from "./components/Cart/Cart.jsx";
 import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin.jsx";
 import AdminItemContainer from "./components/AdminItemContainer/AdminItemContainer.jsx";
+import FormularioProducto from "./components/FormularioProducto/FormularioProducto.jsx";
 
 function App() {
 
@@ -34,9 +35,9 @@ function App() {
 
 
           <Route element={<LayoutAdmin/>}>
-            <Route path="/admin" element={<AdminItemContainer/>} />
-            <Route path="/admin/nuevoproducto" element={<h2>Formulario crear producto</h2>}/>
-            <Route path="/admin/productos" element={<h2>todos los productos</h2>}/>
+            <Route path="/admin"  element={<h2>Bienvenido</h2>}/>
+            <Route path="/admin/nuevoproducto" element={<FormularioProducto/>}/>
+            <Route path="/admin/productos" element={<AdminItemContainer/>}/>
             <Route path="/admin/productos/:id" element={<h2>Formulario actualizar producto</h2>}/>
             
           </Route>

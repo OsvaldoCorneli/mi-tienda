@@ -1,0 +1,31 @@
+form{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 32px 0 32px 0; 
+    width: 50%;
+
+}
+
+form label{
+
+    margin: 32px 0 0 0;
+    width: 50%;
+
+
+}
+
+form input{
+
+    height: 3vh;
+
+}
+
+form button{
+    margin-top: 16px;
+    height: 5vh;
+    width: 25%;
+    align-self: center;
+
+}
