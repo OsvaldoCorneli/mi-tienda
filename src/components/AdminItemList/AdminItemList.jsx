@@ -3,8 +3,6 @@ import AdminItem from "../AdminItem/AdminItem"
 
 const AdminItemList = ({products, handleDelete})=>{
 
-    console.log(products)
-
     return(
         <>
             {

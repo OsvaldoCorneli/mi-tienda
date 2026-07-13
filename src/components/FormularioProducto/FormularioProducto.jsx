@@ -1,15 +1,22 @@
 import style from "./FormularioProducto.module.css"
 
-
 const FormularioProductos = ({
   product,
   handleChange,
   handleSubmit,
   handleEdit,
   edit,
+  navigate,
 }) => {
+
+
+
   return (
     <form onSubmit={edit ? handleEdit : handleSubmit}>
+
+      <button type="button" onClick={() => navigate(-1)}>
+        ← Volver
+      </button>
 
       {edit
         ? <h2>Editar Producto</h2>

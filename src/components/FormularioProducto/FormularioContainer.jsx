@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FormularioProductos from "./FormularioProducto";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   getFirestore,
   collection,
@@ -8,7 +9,6 @@ import {
   getDoc,
   updateDoc,
 } from "firebase/firestore";
-import { useParams, useNavigate } from "react-router-dom";
 
 const initialProduct = {
   id: "",
@@ -30,11 +30,11 @@ const initialProduct = {
 
 const FormularioContainer = ({ edit }) => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const db = getFirestore();
-
+  const navigate = useNavigate();
   const [product, setProduct] = useState(initialProduct);
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     if (!edit) {
@@ -140,6 +140,7 @@ const FormularioContainer = ({ edit }) => {
       handleSubmit={handleSubmit}
       handleEdit={handleEdit}
       edit={edit}
+      navigate={navigate}
     />
   );
 };
