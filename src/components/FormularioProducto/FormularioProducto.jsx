@@ -1,41 +1,13 @@
-import { useState } from "react";
 import style from "./FormularioProducto.module.css"
-const FormularioProducto = () => {
-  const [product, setProduct] = useState({
-    id: "",
-    name: "",
-    brand: "",
-    productType: "",
-    description: "",
-    price: "",
-    stock: "",
-    image: "",
-    category: "",
-    onSale: false,
-    discount: "",
-    sold: 0,
-    rating: 0,
-    reviews: 0,
-    featured: false,
-  });
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
 
-    setProduct({
-      ...product,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(product);
-    // Acá después hacés el POST o agregás el producto
-  };
-
+const FormularioProductos = ({
+  product,
+  handleChange,
+  handleSubmit,
+}) => {
   return (
-    <form onSubmit={handleSubmit} className="product-form">
+    <form onSubmit={handleSubmit}>
       <h2>Nuevo Producto</h2>
 
       <label>ID</label>
@@ -62,7 +34,7 @@ const FormularioProducto = () => {
         onChange={handleChange}
       />
 
-      <label>Tipo de producto</label>
+      <label>Tipo de Producto</label>
       <input
         type="text"
         name="productType"
@@ -93,7 +65,7 @@ const FormularioProducto = () => {
         onChange={handleChange}
       />
 
-      <label>Imagen (URL)</label>
+      <label>Imagen</label>
       <input
         type="text"
         name="image"
@@ -109,7 +81,7 @@ const FormularioProducto = () => {
         onChange={handleChange}
       />
 
-      <label>Descuento (%)</label>
+      <label>Descuento</label>
       <input
         type="number"
         name="discount"
@@ -136,7 +108,7 @@ const FormularioProducto = () => {
         onChange={handleChange}
       />
 
-      <label>Reseñas</label>
+      <label>Reviews</label>
       <input
         type="number"
         name="reviews"
@@ -144,33 +116,29 @@ const FormularioProducto = () => {
         onChange={handleChange}
       />
 
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="onSale"
-            checked={product.onSale}
-            onChange={handleChange}
-          />
-          En oferta
-        </label>
-      </div>
+      <label>
+        <input
+          type="checkbox"
+          name="onSale"
+          checked={product.onSale}
+          onChange={handleChange}
+        />
+        En oferta
+      </label>
 
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="featured"
-            checked={product.featured}
-            onChange={handleChange}
-          />
-          Destacado
-        </label>
-      </div>
+      <label>
+        <input
+          type="checkbox"
+          name="featured"
+          checked={product.featured}
+          onChange={handleChange}
+        />
+        Destacado
+      </label>
 
-      <button type="submit">Crear Producto</button>
+      <button type="submit">Guardar Producto</button>
     </form>
   );
 };
 
-export default FormularioProducto;
+export default FormularioProductos;

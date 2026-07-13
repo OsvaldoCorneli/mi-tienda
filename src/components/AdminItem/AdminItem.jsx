@@ -1,7 +1,7 @@
 import style from "./AdminItem.module.css"
 
 
-function AdminItem({ name, image, stock, price, onSale, id, category }) {
+function AdminItem({ name, image, stock, price, onSale, id, category,handleDelete }) {
 
 
     return (
@@ -13,8 +13,8 @@ function AdminItem({ name, image, stock, price, onSale, id, category }) {
                 </div>
                 <div className={style.card_admin_container2}>
                     <div className={style.card_admin_container2_1}>
-                        <a href="">Boton delete</a>
-                        <a href="">Boton editar</a>
+                        <a href="">editar..</a>
+                        <button onClick={()=> handleDelete(id)}>Eliminar</button>
                     </div>
                     <div className={style.card_admin_container2_2}>
                         <h4>{name}</h4>

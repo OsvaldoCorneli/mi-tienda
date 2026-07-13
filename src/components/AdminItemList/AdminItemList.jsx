@@ -1,7 +1,7 @@
 import AdminItem from "../AdminItem/AdminItem"
 
 
-const AdminItemList = ({products})=>{
+const AdminItemList = ({products, handleDelete})=>{
 
     console.log(products)
 
@@ -19,6 +19,7 @@ const AdminItemList = ({products})=>{
                      onSale={elemento.onSale} 
                      id={elemento.id}  
                      category={elemento.category}
+                     handleDelete={handleDelete}
                     />
 
                 ))
