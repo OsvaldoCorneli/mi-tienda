@@ -15,57 +15,57 @@ function ProductDetails() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-    window.scrollTo(0, 0);
-    setLoading(true); // Acordate de resetear el loading si cambias de ID
+        window.scrollTo(0, 0);
+        setLoading(true); // Acordate de resetear el loading si cambias de ID
 
-    const docRef = doc(db, "productos", id);
-    
-    getDoc(docRef)
-        .then((resp) => {
-            if (resp.exists()) {
-                const productoData = resp.data();
-                // 1. Guardamos el producto principal con su ID
-                setProducto({ ...productoData, id: resp.id });
+        const docRef = doc(db, "productos", id);
 
-                // 2. Buscamos los similares en Firebase usando la categoría de este producto
-                const productosRef = collection(db, "productos");
-                // Armamos la query: "Traeme los que tengan la misma categoría, pero que NO sean el mismo producto"
-                const q = query(
-                    productosRef, 
-                    where("category", "==", productoData.category)
-                );
+        getDoc(docRef)
+            .then((resp) => {
+                if (resp.exists()) {
+                    const productoData = resp.data();
+                    // 1. Guardamos el producto principal con su ID
+                    setProducto({ ...productoData, id: resp.id });
 
-                return getDocs(q); // Le pasamos la posta al siguiente .then
-            } else {
-                setProducto(null);
-                setProdSimilares([]); // Si no hay producto, no hay similares
+                    // 2. Buscamos los similares en Firebase usando la categoría de este producto
+                    const productosRef = collection(db, "productos");
+                    // Armamos la query: "Traeme los que tengan la misma categoría, pero que NO sean el mismo producto"
+                    const q = query(
+                        productosRef,
+                        where("category", "==", productoData.category)
+                    );
+
+                    return getDocs(q); // Le pasamos la posta al siguiente .then
+                } else {
+                    setProducto(null);
+                    setProdSimilares([]); // Si no hay producto, no hay similares
+                    setLoading(false);
+                }
+            })
+            .then((querySnapshot) => {
+                // Este .then maneja la respuesta de los productos similares
+                if (querySnapshot) {
+                    const similares = [];
+                    querySnapshot.forEach((doc) => {
+                        // Opcional: Evitá que el producto actual aparezca en la lista de similares
+                        if (doc.id !== id) {
+                            similares.push({ ...doc.data(), id: doc.id });
+                        }
+                    });
+
+                    // Guardamos el array de productos similares en tu estado (que debería inicializar como [])
+                    setProdSimilares(similares);
+                    setLoading(false);
+                }
+            })
+            .catch(error => {
+                console.error("Error cargando datos:", error);
                 setLoading(false);
-            }
-        })
-        .then((querySnapshot) => {
-            // Este .then maneja la respuesta de los productos similares
-            if (querySnapshot) {
-                const similares = [];
-                querySnapshot.forEach((doc) => {
-                    // Opcional: Evitá que el producto actual aparezca en la lista de similares
-                    if (doc.id !== id) {
-                        similares.push({ ...doc.data(), id: doc.id });
-                    }
-                });
-                
-                // Guardamos el array de productos similares en tu estado (que debería inicializar como [])
-                setProdSimilares(similares);
-                setLoading(false);
-            }
-        })
-        .catch(error => {
-            console.error("Error cargando datos:", error);
-            setLoading(false);
-        });
+            });
 
-}, [id]);
+    }, [id]);
 
-    
+
     function calcularOferta(precio, descuento) {
 
         const precioConDescuento = parseInt(precio - (precio * descuento) / 100)
@@ -93,13 +93,12 @@ function ProductDetails() {
 
             <section className={style.seccion_img}>
                 <img src={producto.image} alt="" />
-                <p>{producto.description}</p>
                 {producto.onSale
                     ? <span>{`${producto.discount} OFF`}</span>
-                    : ""
+                    : null
                 }
-            </section>
-            <section>
+            </section >
+            <section className={style.seccion_info} >
                 {
                     !producto.onSale
                         ? <div className={style.seccion_price}>
@@ -115,6 +114,10 @@ function ProductDetails() {
                 }
 
                 <div className={style.seccion_function}>
+                    <div className={style.seccion_button}>
+                        <button className={style.add_cart}>Agregar al carrito</button>
+                        <button className={style.buy_now}>Comprar ahora</button>
+                    </div>
                     <div className={style.seccion_cantidad}>
                         <p>{`Stock: ${producto.stock}`}</p>
                         <div>
@@ -130,10 +133,7 @@ function ProductDetails() {
                         </div>
 
                     </div>
-                    <div className={style.seccion_button}>
-                        <button>Agregar al carrito</button>
-                        <button>Comprar</button>
-                    </div>
+                    <p className={style.description_detail}>{producto.description}</p>
                 </div>
             </section>
 
