@@ -10,6 +10,7 @@ import AdminItemContainer from "./components/AdminItemContainer/AdminItemContain
 import FormularioProducto from "./components/FormularioProducto/FormularioProducto.jsx";
 import FormularioContainer from "./components/FormularioProducto/FormularioContainer.jsx";
 import Login from "./components/Login/Login.jsx";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
 
@@ -20,33 +21,37 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<ItemListContainer
-          mensaje={"Aprovechá estas ofertas"}
-          onSales={true}
-          />}/>
-           <Route path="/productos" element={<ItemListContainer
-          mensaje={"Catálogo completo"}
-          onSales={false}
-          />}/>
-          
-          <Route path="/productos/:id" element={<ProductDetails />}/>
+            mensaje={"Aprovechá estas ofertas"}
+            onSales={true}
+          />} />
+          <Route path="/productos" element={<ItemListContainer
+            mensaje={"Catálogo completo"}
+            onSales={false}
+          />} />
 
-          <Route path="/carrito" element={<Cart />}/>
-          <Route path="/login" element={<Login />}/>
-          
+          <Route path="/productos/:id" element={<ProductDetails />} />
+
+          <Route path="/carrito" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+
 
         </Route>
 
 
-          <Route element={<LayoutAdmin/>}>
-            <Route path="/admin"  element={<h2>Bienvenido</h2>}/>
-            <Route path="/admin/nuevoproducto" element={<FormularioContainer edit={false}/>}/>
-            <Route path="/admin/productos" element={<AdminItemContainer/>}/>
-            <Route path="/admin/productos/:id" element={<FormularioContainer edit={true}/>}/>
-            
-          </Route>
+        <Route element={
+          <ProtectedRoute>
+            <LayoutAdmin />
+          </ProtectedRoute>
+        }>
+          <Route path="/admin" element={<h2>Bienvenido</h2>} />
+          <Route path="/admin/nuevoproducto" element={<FormularioContainer edit={false} />} />
+          <Route path="/admin/productos" element={<AdminItemContainer />} />
+          <Route path="/admin/productos/:id" element={<FormularioContainer edit={true} />} />
+
+        </Route>
 
       </Routes>
-  
+
 
 
     </>
