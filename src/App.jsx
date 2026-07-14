@@ -9,6 +9,7 @@ import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin.jsx";
 import AdminItemContainer from "./components/AdminItemContainer/AdminItemContainer.jsx";
 import FormularioProducto from "./components/FormularioProducto/FormularioProducto.jsx";
 import FormularioContainer from "./components/FormularioProducto/FormularioContainer.jsx";
+import Login from "./components/Login/Login.jsx";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/productos/:id" element={<ProductDetails />}/>
 
           <Route path="/carrito" element={<Cart />}/>
+          <Route path="/login" element={<Login />}/>
           
 
         </Route>
