@@ -4,7 +4,6 @@ import Footer from './Footer/Footer.jsx';
 import SkeletonItem from '../SkeletonItem/SkeletonItem.jsx';
 import SkeletonContainer from '../SkeletonContainer/SkeletonContainer.jsx';
 
-
 function Layout() {
 
     return (

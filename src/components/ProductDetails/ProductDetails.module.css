@@ -1,66 +1,81 @@
-article{
+article {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin: 16px 4px;
-    padding: 16px;
     max-width: 540px;
+    align-self: center;
+    justify-self: center;
 }
 
-.seccion_img{
+.seccion_img {
     width: 100%;
-   
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: solid 1px black;
     padding: 16px;
     border-radius: 5px;
     background-color: white;
     position: relative;
-    
+
 }
 
-.seccion_img p{
+
+.seccion_img p {
     font-size: 1.2rem
 }
 
-.seccion_img img{
+.seccion_img img {
 
     width: 90vw;
     margin-bottom: 16px;
     max-width: 400px;
-     max-height: 420px;
+    max-height: 420px;
 
 }
 
-.seccion_price, .seccion_price_onSale, .seccion_function{
+.seccion_info {
+
+    display: flex;
+    flex-direction: column;
+    margin: 4px 8px;
+
+}
+
+
+.seccion_price,
+.seccion_price_onSale,
+.seccion_function {
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    padding: 16px;
+    margin: 0 16px;
     background-color: var(--thirdColor);
-    color: white;
+    color: black;
 
 }
 
-.seccion_price p{
+.seccion_price p {
     font-size: 1.5rem;
 }
 
-.seccion_price_onSale p{
+.seccion_price_onSale p {
     font-size: 1.2rem;
     color: rgb(255, 91, 91);
     text-decoration: line-through;
 }
 
-.seccion_img span{
+.seccion_info h2 {
+    margin-top: 4px;
+}
+
+.seccion_img span {
     color: white;
     padding: 6px;
     background-color: red;
@@ -73,12 +88,13 @@ article{
     top: 0;
 }
 
-.seccion_price div, .seccion_price_onSale div{
+.seccion_price div,
+.seccion_price_onSale div {
     width: 100%;
     display: flex;
 }
 
-.seccion_cantidad{
+.seccion_cantidad {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -86,7 +102,7 @@ article{
     align-items: center;
 }
 
-.seccion_cantidad select{
+.seccion_cantidad select {
     align-self: flex-end;
     width: 60px;
     height: 30px;
@@ -94,64 +110,84 @@ article{
 
 
 
-.seccion_button{
+.seccion_button {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 16px;
-    margin: 16 0px;
+    margin: 10px 0;
     align-items: center;
     justify-content: center;
-    background-color: var(--thirdColor);
 }
 
 
-.seccion_button button{
-    width: 50%;
-    height: 60px;
-    margin: 16px;
-    padding: 16px;
-    background-color: var(--primaryColor);
-    border-radius: 10px;
+.seccion_button button {
+    width: 95%;
+    height: 50px;
+    margin: 8px;
+    border-radius: 5px;
     font-weight: bold;
+    max-width: 430px;
+    max-height: 50px;
 }
 
-.seccion_button button:hover{
-    background-color: var(--secundaryColor);
-}
 
-.seccion_price_onSale span{
+
+.seccion_price_onSale span {
 
     color: var(--primaryColor);
     font-size: 1.6rem;
 
 }
 
+.add_cart {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.buy_now {
+    background-color: var(--color-dark-bg);
+    color: white;
+}
+
+.description_detail {
+    margin: 16px 8px 0 8px;
+    padding: 16px 0;
+    font-size: 1.2rem;
+    border-top: 0.2px black solid;
+    border-bottom: 0.2px black solid;
+}
+
 @media(min-width: 766px) {
-    article{
+    article {
         flex-direction: row;
         justify-content: center;
         align-items: center;
         max-width: 1020px;
     }
 
-    section{
-        height: 500px;
-    }
 
-   .seccion_function{
+
+    .seccion_function {
         height: 100vw;
         max-height: 310px;
 
     }
 
-    .seccion_button{
+    .seccion_button {
         height: 50%;
     }
 
-    .seccion_button button{
+    .seccion_button button {
         height: 80px;
         padding: 0 5px;
         margin: 4px;
 
- }
+    }
+
+    .seccion_price,
+    .seccion_price_onSale,
+    .seccion_function {
+
+        padding: 0px 16px;
+    }
 }
