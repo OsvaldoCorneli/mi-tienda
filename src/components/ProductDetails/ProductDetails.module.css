@@ -1,3 +1,4 @@
+
 article {
     display: flex;
     flex-direction: column;
@@ -5,6 +6,8 @@ article {
     justify-content: center;
     width: 100%;
     max-width: 540px;
+    align-self: center;
+    justify-self: center;
 }
 
 .seccion_img {
