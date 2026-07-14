@@ -15,7 +15,7 @@ function Header() {
                     <img src="/imagen/logomitienda.jpeg" alt="logo de mi tienda" />
                     <SearchBar prop={false} />
                     {/* <FontAwesomeIcon icon={faUser} /> */}
-                    <a className={style.other_icon}><FontAwesomeIcon  icon={faUser} /></a>
+                    <Link to="/login" className={style.other_icon}><FontAwesomeIcon  icon={faUser} /></Link>
                     <a className={style.other_icon} ><FontAwesomeIcon icon={faBell} /></a>
                     <Link to="/carrito"className={style.mobile_icon} ><FontAwesomeIcon icon={faCartShopping} /></Link>
                 </section>
