@@ -1,10 +1,11 @@
 import AdminItem from "../AdminItem/AdminItem"
-
+import style from "./AdminItemList.module.css"
 
 const AdminItemList = ({products, handleDelete})=>{
 
     return(
-        <>
+        <section className={style.admin_item_container}>
+
             {
                 products.map((elemento)=>(
 
@@ -22,7 +23,7 @@ const AdminItemList = ({products, handleDelete})=>{
 
                 ))
             }
-        </>
+        </section>
     )
 }
 
