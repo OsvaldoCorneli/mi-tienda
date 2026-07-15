@@ -1,11 +1,12 @@
-form{
+.form_products{
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 32px 0 32px 0; 
     width: 50%;
-
+    justify-self: center;
+    align-self: center;
 }
 
 form label{

@@ -12,7 +12,7 @@ const FormularioProductos = ({
 
 
   return (
-    <form onSubmit={edit ? handleEdit : handleSubmit}>
+    <form onSubmit={edit ? handleEdit : handleSubmit} className={style.form_products}>
 
       <button type="button" onClick={() => navigate(-1)}>
         ← Volver
