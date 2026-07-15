@@ -10,7 +10,7 @@ function LayoutAdmin(){
     <>
 
         <HeaderAdmin />
-            <main className={style.main_admin}>
+            <main >
                 <Outlet/>
             </main>
 
