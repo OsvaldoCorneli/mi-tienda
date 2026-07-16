@@ -7,6 +7,7 @@ article {
     max-width: 540px;
     align-self: center;
     justify-self: center;
+    margin: 32px 0;
 }
 
 .seccion_img {

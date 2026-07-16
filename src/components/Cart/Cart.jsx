@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext.jsx'; // 1. Importamos el hook
 import { Link } from 'react-router-dom';
+import style from './Cart.module.css'
 const Cart = () => {
 
     const { cart, clearCart, getCartTotal } = useCart();
@@ -15,12 +16,23 @@ const Cart = () => {
                 </Link>
             </div>
         );
-    }
+    }   
+
+        console.log("cart", cart)
+        cart.map((elemento)=>{
+
+            console.log(elemento.quantity, "quantity: ")
+            console.log(elemento.price, "price: ")
+            console.log(typeof(elemento.quantity),typeof(elemento.price))
+
+        })
+    
     // Si hay productos, los mostramos con las opciones de finalizar y vaciar
     return (
         <div>
             <h1>Carrito de Compras</h1>
             {cart.map(item => (
+                
                 <div key={item.id} className="cart-item">
                     <h4>{item.name}</h4>
                     <p>Cantidad: {item.quantity}</p>
