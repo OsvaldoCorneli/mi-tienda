@@ -36,8 +36,8 @@ export const CartProvider = ({ children }) => {
         return cart.reduce((acc, item) => acc + item.quantity, 0);
     }
     const getCartTotal = () => {
-
-        return cart.reduce((acc, item) => acc + item.precio * item.quantity, 0);
+        
+        return cart.reduce((acc, item) => acc + parseFloat(item.price) * parseFloat(item.quantity), 0);
     }
 
     const getCantidadActual = (productId) => {
@@ -45,10 +45,16 @@ export const CartProvider = ({ children }) => {
         return item ? item.quantity : 0;
     };
 
+    const deleteProduct = (productId) => {
+    setCart(prevCart =>
+        prevCart.filter(item => item.id !== productId)
+    );
+};
+
     return (
         <CartContext.Provider value={{
             cart, addToCart, clearCart,
-            getCartQuantity, getCartTotal, getCantidadActual
+            getCartQuantity, getCartTotal, getCantidadActual,  deleteProduct
         }}>
             {children}
         </CartContext.Provider>

@@ -15,10 +15,7 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale, fo
         alert(`Agregaste el producto ${name} al carrito.`);
     };
 
-    console.log(precioFinal, 'Preciofinal')
-    console.log(price, "price")
-    console.log(typeof(precioFinal), 'TO PF')
-    console.log(typeof(price), "TO pri")
+
 
     return (
 
