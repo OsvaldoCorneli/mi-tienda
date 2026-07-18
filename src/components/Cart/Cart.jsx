@@ -3,7 +3,7 @@ import { useCart } from "../../context/CartContext.jsx"; // 1. Importamos el hoo
 import { Link } from "react-router-dom";
 import style from "./Cart.module.css";
 const Cart = () => {
-  const { cart, clearCart, getCartTotal, deleteProduct } = useCart();
+  const { cart, clearCart, getCartTotal, deleteProduct, increaseQuantity } = useCart();
   // Si el carrito está vacío, mostramos un mensaje
   if (cart.length === 0) {
     return (
@@ -39,7 +39,11 @@ const Cart = () => {
                 <h4>{item.name}</h4>
               </div>
               <p className={style.price}>${item.price}</p>
-              <p className={style.quantity}>{item.quantity}</p>
+              <div className={style.quantity}>
+                <button onClick={()=> increaseQuantity(item.id, "decrement")}>-</button>
+                <p>{item.quantity}</p>
+                <button onClick={()=> increaseQuantity(item.id, "increase")}>+</button>
+              </div>
               <p className={style.total}>{item.price * item.quantity}</p>
               <button onClick={() => deleteProduct(item.id)}>Eliminar</button>
             </div>
