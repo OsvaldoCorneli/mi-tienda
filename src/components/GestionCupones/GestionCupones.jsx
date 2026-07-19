@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../../firebase/config";
 import { addDoc, collection, deleteDoc, getDocs , doc} from "firebase/firestore";
+import style from './GestionCupones.module.css'
 
 function GestionCupones() {
   const [coupons, setCoupons] = useState([]);
@@ -77,7 +78,7 @@ function GestionCupones() {
   console.log("INGRESO CACHO", coupons);
 
   return (
-    <div>
+    <div className={style.gestion_cupon}>
       <h2>Administracion de Cupones</h2>
 
        <form onSubmit={crearCupon}>
@@ -107,21 +108,22 @@ function GestionCupones() {
 
       <button type="submit">Crear</button>
     </form>
+    
+        <h3>Lista de cupones</h3>
 
       {coupons ? (
         <section>
-          <h3>Lista de cupones</h3>
 
           {coupons.map((item) => (
             <div key={item.id}>
               <p>
-                <strong>Codigo:</strong>
+                <strong>Codigo: </strong>
                 {item.code}
               </p>
 
               <p>
-                <strong>Descuento:</strong>
-                {item.discount}
+                <strong>Descuento: </strong>
+                {item.discount}%
               </p>
               <button onClick={()=> eliminarCupon(item.id)}>Eliminar</button>
             </div>

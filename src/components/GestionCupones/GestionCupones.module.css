@@ -1,0 +1,47 @@
+.gestion_cupon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.gestion_cupon form{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border: solid 1px black;
+    padding: 32px;
+    box-shadow: 1px 1px 1px 0.5px gray ;
+}
+
+.gestion_cupon section{
+
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+    gap: 32px;
+    margin: 32px 0 0 0;
+    justify-content: start;
+    width: 50%;
+
+}
+
+.gestion_cupon section div{
+
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+    padding: 32px;
+    width: 40%;
+    gap: 16px;
+    
+}
+
+.gestion_cupon h3{
+    margin: 16px 0 0 0;
+}
