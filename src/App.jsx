@@ -11,6 +11,7 @@ import FormularioProducto from "./components/FormularioProducto/FormularioProduc
 import FormularioContainer from "./components/FormularioProducto/FormularioContainer.jsx";
 import Login from "./components/Login/Login.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
+import GestionCupones from "./components/GestionCupones/GestionCupones.jsx";
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
           <Route path="/admin/nuevoproducto" element={<FormularioContainer edit={false} />} />
           <Route path="/admin/productos" element={<AdminItemContainer />} />
           <Route path="/admin/productos/:id" element={<FormularioContainer edit={true} />} />
-
+          <Route path="/admin/cupones" element={<GestionCupones/>} />
         </Route>
 
       </Routes>

@@ -3,9 +3,9 @@ import style from './Item.module.css'
 import { useState } from 'react';
 import { useCart } from '../../context/CartContext.jsx';
 
-function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) {
+function Item({ id, name, precioFinal, price, discount, image, stock, onSale, formatearPrecio }) {
     
-    const producto = { id, name, precioFinal, price, discount, image, stock, onSale };
+    const producto = { id, name, price ,precioFinal, discount, image, stock, onSale };
     const [cantidad, setCantidad] = useState(1);
 
     const { addToCart , getCantidadActual} = useCart();
@@ -14,6 +14,7 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
         addToCart(producto, cantidad);
         alert(`Agregaste el producto ${name} al carrito.`);
     };
+
 
 
     return (
@@ -37,12 +38,12 @@ function Item({ id, name, precioFinal, price, discount, image, stock, onSale }) 
             {!onSale
                 ? <section className={style.card_info}>
                     <p className={style.name}>{name}</p>
-                    <span className={style.price}>{`$${price}`}</span>
+                    <span className={style.price}>{`$${formatearPrecio(price)}`}</span>
                 </section>
                 : <section className={style.card_info_onSale}>
                     <p>{name}</p>
-                    <div className={style.not_price}>{`$${price}`}</div>
-                    <span>{`$${precioFinal}`}</span>
+                    <div className={style.not_price}>{`$${formatearPrecio(price)}`}</div>
+                    <span>{`$${formatearPrecio(precioFinal(price, discount))}`}</span>
 
                 </section>
 
