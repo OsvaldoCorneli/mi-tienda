@@ -182,7 +182,7 @@ article {
         height: 80px;
         padding: 0 5px;
         margin: 4px;
-
+        cursor: pointer;
     }
 
     .seccion_price,
