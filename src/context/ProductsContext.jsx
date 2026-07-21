@@ -2,87 +2,70 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../firebase/config";
 import { collection, getDocs, query, limit } from "firebase/firestore";
 
-
 const ProductsContext = createContext();
 
-
 export const useProducts = () => {
-    const context = useContext(ProductsContext);
+  const context = useContext(ProductsContext);
 
-    if (!context) {
-        throw new Error(
-            "useProducts debe ser usado dentro de un ProductsProvider"
-        );
-    }
+  if (!context) {
+    throw new Error("useProducts debe ser usado dentro de un ProductsProvider");
+  }
 
-    return context;
+  return context;
 };
 
-
-
 export const ProductsProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const getProducts = async () => {
+    try {
+      const prodDB = query(collection(db, "productos"), limit(20));
 
+      const response = await getDocs(prodDB);
 
+      const listaProductos = response.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
 
-    const getProducts = async () => {
+      setProducts(listaProductos);
+    } catch (error) {
+      console.error("Error obteniendo productos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        try {
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-            const prodDB = query(
-                collection(db, "productos"),
-                limit(20)
-            );
+  const getProductById = (productId) => {
+    const product = products.find((item) => item.id === productId);
 
+    return product;
+  };
 
-            const response = await getDocs(prodDB);
+  const getProductsSimilar = (category, productType)=>{
 
-            const listaProductos = response.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id
-            }));
-
-
-            setProducts(listaProductos);
-
-
-        } catch(error){
-
-            console.error("Error obteniendo productos:", error);
-
-        } finally {
-
-            setLoading(false);
-
-        }
-
-    };
+    const productsSimilar = products.filter((item)=> item.category === category || item.productType === productType)
+    return productsSimilar;
 
 
 
-    useEffect(() => {
+  }
 
-        getProducts();
-
-    }, []);
-
-
-
-    return (
-
-        <ProductsContext.Provider
-            value={{
-                products,
-                loading
-            }}
-        >
-
-            {children}
-
-        </ProductsContext.Provider>
-
-    );
-
+  return (
+    <ProductsContext.Provider
+      value={{
+        products,
+        loading,
+        getProductById,
+        getProductsSimilar
+      }}
+    >
+      {children}
+    </ProductsContext.Provider>
+  );
 };

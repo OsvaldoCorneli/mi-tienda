@@ -11,15 +11,17 @@ import {
 import { db } from "../../firebase/config.js";
 import style from "./ProductDetails.module.css";
 import { useCart } from "../../context/CartContext.jsx";
+import { useProducts } from "../../context/ProductsContext.jsx";
 
 function ProductDetails() {
   const { id } = useParams();
   const [producto, setProducto] = useState({});
   const [prodSimilares, setProdSimilares] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+
   const [cantidad, setCantidad] = useState(1);
   const { addToCart, getCantidadActual } = useCart();
+  const { products, loading, getProductById, getProductsSimilar } = useProducts();
 
   const handleAddToCart = () => {
     addToCart(producto, cantidad);
@@ -28,59 +30,22 @@ function ProductDetails() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setLoading(true); // Acordate de resetear el loading si cambias de ID
+    if (products) {
+      const product = getProductById(id);
+      const productsSimilar = getProductsSimilar(product.category, product.productType)
+      setProducto(product);
+      setProdSimilares(productsSimilar)
 
-    const docRef = doc(db, "productos", id);
-
-    getDoc(docRef)
-      .then((resp) => {
-        if (resp.exists()) {
-          const productoData = resp.data();
-          // 1. Guardamos el producto principal con su ID
-          setProducto({ ...productoData, id: resp.id });
-
-          // 2. Buscamos los similares en Firebase usando la categoría de este producto
-          const productosRef = collection(db, "productos");
-          // Armamos la query: "Traeme los que tengan la misma categoría, pero que NO sean el mismo producto"
-          const q = query(
-            productosRef,
-            where("category", "==", productoData.category),
-          );
-
-          return getDocs(q); // Le pasamos la posta al siguiente .then
-        } else {
-          setProducto(null);
-          setProdSimilares([]); // Si no hay producto, no hay similares
-          setLoading(false);
-        }
-      })
-      .then((querySnapshot) => {
-        // Este .then maneja la respuesta de los productos similares
-        if (querySnapshot) {
-          const similares = [];
-          querySnapshot.forEach((doc) => {
-            // Opcional: Evitá que el producto actual aparezca en la lista de similares
-            if (doc.id !== id) {
-              similares.push({ ...doc.data(), id: doc.id });
-            }
-          });
-
-          // Guardamos el array de productos similares en tu estado (que debería inicializar como [])
-          setProdSimilares(similares);
-          setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error cargando datos:", error);
-        setLoading(false);
-      });
-  }, [id]);
+    }
+  }, [id, products]);
 
   function calcularOferta(precio, descuento) {
     const precioConDescuento = parseInt(precio - (precio * descuento) / 100);
 
     return String(precioConDescuento);
   }
+
+  console.log(prodSimilares)
 
   if (loading) {
     return <p>Cargando...</p>;
@@ -140,9 +105,21 @@ function ProductDetails() {
                                         </option>
                                     ))}
                                 </select> */}
-              <button onClick={()=>{setCantidad(Math.min(producto.stock, cantidad + 1))}}>+</button>
+              <button
+                onClick={() => {
+                  setCantidad(Math.min(producto.stock, cantidad + 1));
+                }}
+              >
+                +
+              </button>
               <p>{cantidad}</p>
-              <button onClick={()=>{setCantidad(Math.max(1, cantidad - 1))}}>-</button>
+              <button
+                onClick={() => {
+                  setCantidad(Math.max(1, cantidad - 1));
+                }}
+              >
+                -
+              </button>
             </div>
           </div>
           <p className={style.description_detail}>{producto.description}</p>
