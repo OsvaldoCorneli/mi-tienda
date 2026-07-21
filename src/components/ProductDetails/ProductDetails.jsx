@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  doc,
-  getDoc,
-  collection,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
-import { db } from "../../firebase/config.js";
 import style from "./ProductDetails.module.css";
 import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
@@ -18,10 +9,10 @@ function ProductDetails() {
   const [producto, setProducto] = useState({});
   const [prodSimilares, setProdSimilares] = useState([]);
   const [error, setError] = useState(null);
-
   const [cantidad, setCantidad] = useState(1);
   const { addToCart, getCantidadActual } = useCart();
-  const { products, loading, getProductById, getProductsSimilar } = useProducts();
+  const { products, loading, getProductById, getProductsSimilar } =
+    useProducts();
 
   const handleAddToCart = () => {
     addToCart(producto, cantidad);
@@ -30,12 +21,17 @@ function ProductDetails() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (products) {
+    if (products.length > 0) {
       const product = getProductById(id);
-      const productsSimilar = getProductsSimilar(product.category, product.productType)
       setProducto(product);
-      setProdSimilares(productsSimilar)
 
+      if (Object.keys(product).length > 0) {
+        const productsSimilar = getProductsSimilar(
+          product.category,
+          product.productType,
+        );
+        setProdSimilares(productsSimilar);
+      }
     }
   }, [id, products]);
 
@@ -44,8 +40,6 @@ function ProductDetails() {
 
     return String(precioConDescuento);
   }
-
-  console.log(prodSimilares)
 
   if (loading) {
     return <p>Cargando...</p>;
