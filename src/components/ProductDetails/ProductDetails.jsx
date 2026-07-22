@@ -30,13 +30,13 @@ function ProductDetails() {
         const productsSimilar = getProductsSimilar(
           product.category,
           product.productType,
-          product.id
+          product.id,
         );
         setProdSimilares(productsSimilar);
       }
-    } 
+    }
   }, [id, products]);
-  
+
   function calcularOferta(precio, descuento) {
     const precioConDescuento = parseInt(precio - (precio * descuento) / 100);
 
@@ -54,46 +54,46 @@ function ProductDetails() {
   if (error) {
     return <span>{error}</span>;
   }
-  console.log(prodSimilares)
+  console.log(prodSimilares);
   return (
     <article>
-      <div className={style.div_container_1}> 
-      <section className={style.seccion_img}>
-        <img src={producto.image} alt="" />
-        {producto.onSale ? <span>{`${producto.discount} OFF`}</span> : null}
-      </section>
-      <section className={style.seccion_info}>
-        {!producto.onSale ? (
-          <div className={style.seccion_price}>
-            <h2>{producto.name}</h2>
-            <p>{`$${producto.price}`}</p>
-          </div>
-        ) : (
-          <div className={style.seccion_price_onSale}>
-            <h2>{producto.name}</h2>
-            <p>{`$${producto.price}`}</p>
-            <span>{`$${calcularOferta(producto.price, producto.discount)}`}</span>
-          </div>
-        )}
+      <div className={style.div_container_1}>
+        <section className={style.seccion_img}>
+          <img src={producto.image} alt="" />
+          {producto.onSale ? <span>{`${producto.discount} OFF`}</span> : null}
+        </section>
+        <section className={style.seccion_info}>
+          {!producto.onSale ? (
+            <div className={style.seccion_price}>
+              <h2>{producto.name}</h2>
+              <p>{`$${producto.price}`}</p>
+            </div>
+          ) : (
+            <div className={style.seccion_price_onSale}>
+              <h2>{producto.name}</h2>
+              <p>{`$${producto.price}`}</p>
+              <span>{`$${calcularOferta(producto.price, producto.discount)}`}</span>
+            </div>
+          )}
 
-        <div className={style.seccion_function}>
-          <div className={style.seccion_button}>
-            <button
-              className={style.add_cart}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleAddToCart();
-              }}
-            >
-              Agregar al carrito
-            </button>
-            <button className={style.buy_now}>Comprar ahora</button>
-          </div>
-          <div className={style.seccion_cantidad}>
-            <p>{`Stock: ${producto.stock}`}</p>
-            <div>
-              {/* <p>Cantidad:</p>
+          <div className={style.seccion_function}>
+            <div className={style.seccion_button}>
+              <button
+                className={style.add_cart}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleAddToCart();
+                }}
+              >
+                Agregar al carrito
+              </button>
+              <button className={style.buy_now}>Comprar ahora</button>
+            </div>
+            <div className={style.seccion_cantidad}>
+              <p>{`Stock: ${producto.stock}`}</p>
+              <div>
+                {/* <p>Cantidad:</p>
                                 <select>
 
                                     {Array.from({ length: producto.stock }, (_, i) => i + 1).map(num => (
@@ -102,45 +102,42 @@ function ProductDetails() {
                                         </option>
                                     ))}
                                 </select> */}
-              <button
-                onClick={() => {
-                  setCantidad(Math.min(producto.stock, cantidad + 1));
-                }}
-              >
-                +
-              </button>
-              <p>{cantidad}</p>
-              <button
-                onClick={() => {
-                  setCantidad(Math.max(1, cantidad - 1));
-                }}
-              >
-                -
-              </button>
+                <button
+                  onClick={() => {
+                    setCantidad(Math.min(producto.stock, cantidad + 1));
+                  }}
+                >
+                  +
+                </button>
+                <p>{cantidad}</p>
+                <button
+                  onClick={() => {
+                    setCantidad(Math.max(1, cantidad - 1));
+                  }}
+                >
+                  -
+                </button>
+              </div>
             </div>
+            <p className={style.description_detail}>{producto.description}</p>
           </div>
-          <p className={style.description_detail}>{producto.description}</p>
-        </div>
-      </section>
+        </section>
       </div>
       <div className={style.div_container_2}>
         <h2>Productos Similares</h2>
-        <br />
-        {
-          prodSimilares
-          ? prodSimilares.map(item => (
-            <ProductsSimilar
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            price={item.price}
-            image={item.image}
-            
-            />
-          ))
-          : null
-        }
-
+        <section>
+          {prodSimilares
+            ? prodSimilares.map((item) => (
+                <ProductsSimilar
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  image={item.image}
+                />
+              ))
+            : null}
+        </section>
       </div>
     </article>
   );
