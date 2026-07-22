@@ -47,9 +47,9 @@ export const ProductsProvider = ({ children }) => {
     return product;
   };
 
-  const getProductsSimilar = (category, productType)=>{
+  const getProductsSimilar = (category, productType, id)=>{
 
-    const productsSimilar = products.filter((item)=> item.category === category || item.productType === productType)
+    const productsSimilar = products.filter((item)=> (item.category === category || item.productType === productType) && item.id != id)
     return productsSimilar;
 
 

@@ -1,14 +1,16 @@
-const ProductsSimilar = ()=>{
+import { Link } from "react-router-dom";
+import style from "./ProductsSimilar.module.css"
+const ProductsSimilar = ({ id, name, price, image})=>{
 
-
+    console.log( 'id',id, 'name',name, 'p',price, 'i',image )
     return(
 
-        <section>
-            <h5>Nombre</h5>
-            <img src="https://cdn-icons-png.flaticon.com/512/17003/17003579.png" alt="" />
-            <p>$24125123</p>
+        <Link to={'/productos/'+id} className={style.card_similar}>
+            <img src={image} alt={name} />
+            <h3>{name}</h3>
+            <p>${price}</p>
 
-        </section>
+        </Link>
         
     )
 

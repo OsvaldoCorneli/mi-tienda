@@ -1,0 +1,27 @@
+.card_similar{
+    display: flex;
+    flex-direction: column;
+    border: black 1px solid;
+    padding: 32px 16px;
+    width: 200px;
+    height: auto;
+    text-decoration: none;
+    color: black
+}
+
+.card_similar img{
+ 
+    width: 150px;
+    align-self: center;
+
+}
+
+.card_similar h3{
+    text-align: center;
+    
+    
+}
+
+.card_similar p{
+    text-align: center;
+}

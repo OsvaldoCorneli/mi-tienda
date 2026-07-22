@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import style from "./ProductDetails.module.css";
 import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
+import ProductsSimilar from "../ProductsSimilar/ProductsSimilar.jsx";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -29,12 +30,13 @@ function ProductDetails() {
         const productsSimilar = getProductsSimilar(
           product.category,
           product.productType,
+          product.id
         );
         setProdSimilares(productsSimilar);
       }
-    }
+    } 
   }, [id, products]);
-
+  
   function calcularOferta(precio, descuento) {
     const precioConDescuento = parseInt(precio - (precio * descuento) / 100);
 
@@ -52,7 +54,7 @@ function ProductDetails() {
   if (error) {
     return <span>{error}</span>;
   }
-
+  console.log(prodSimilares)
   return (
     <article>
       <div className={style.div_container_1}> 
@@ -120,6 +122,25 @@ function ProductDetails() {
           <p className={style.description_detail}>{producto.description}</p>
         </div>
       </section>
+      </div>
+      <div className={style.div_container_2}>
+        <h2>Productos Similares</h2>
+        <br />
+        {
+          prodSimilares
+          ? prodSimilares.map(item => (
+            <ProductsSimilar
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            image={item.image}
+            
+            />
+          ))
+          : null
+        }
+
       </div>
     </article>
   );
