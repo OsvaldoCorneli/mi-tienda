@@ -75,8 +75,6 @@ function GestionCupones() {
 
   }
 
-  console.log("INGRESO CACHO", coupons);
-
   return (
     <div className={style.gestion_cupon}>
       <h2>Administracion de Cupones</h2>

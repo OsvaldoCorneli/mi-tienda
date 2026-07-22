@@ -55,6 +55,7 @@ function ProductDetails() {
 
   return (
     <article>
+      <div className={style.div_container_1}> 
       <section className={style.seccion_img}>
         <img src={producto.image} alt="" />
         {producto.onSale ? <span>{`${producto.discount} OFF`}</span> : null}
@@ -119,6 +120,7 @@ function ProductDetails() {
           <p className={style.description_detail}>{producto.description}</p>
         </div>
       </section>
+      </div>
     </article>
   );
 }
