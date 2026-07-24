@@ -4,6 +4,7 @@ import style from "./ProductDetails.module.css";
 import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
 import ProductsSimilar from "../ProductsSimilar/ProductsSimilar.jsx";
+import { calcularOferta, formatearPrecio } from "../../utils/functions.js";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -37,12 +38,6 @@ function ProductDetails() {
     }
   }, [id, products]);
 
-  function calcularOferta(precio, descuento) {
-    const precioConDescuento = parseInt(precio - (precio * descuento) / 100);
-
-    return String(precioConDescuento);
-  }
-
   if (loading) {
     return <p>Cargando...</p>;
   }
@@ -54,7 +49,7 @@ function ProductDetails() {
   if (error) {
     return <span>{error}</span>;
   }
-  console.log(prodSimilares);
+
   return (
     <article>
       <div className={style.div_container_1}>
@@ -66,13 +61,13 @@ function ProductDetails() {
           {!producto.onSale ? (
             <div className={style.seccion_price}>
               <h2>{producto.name}</h2>
-              <p>{`$${producto.price}`}</p>
+              <p>{`$${formatearPrecio(producto.price)}`}</p>
             </div>
           ) : (
             <div className={style.seccion_price_onSale}>
               <h2>{producto.name}</h2>
-              <p>{`$${producto.price}`}</p>
-              <span>{`$${calcularOferta(producto.price, producto.discount)}`}</span>
+              <p>{`$${formatearPrecio(producto.price)}`}</p>
+              <span>{`$${formatearPrecio(calcularOferta(producto.price, producto.discount))}`}</span>
             </div>
           )}
 
@@ -134,6 +129,10 @@ function ProductDetails() {
                   name={item.name}
                   price={item.price}
                   image={item.image}
+                  onSale={item.onSale}
+                  discount={item.discount}
+                  formatearPrecio={formatearPrecio}
+                  calcularOferta={calcularOferta}
                 />
               ))
             : null}
