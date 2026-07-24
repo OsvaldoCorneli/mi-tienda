@@ -35,6 +35,12 @@
 
 }
 
+.before_price{
+    color: red;
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
 .card_similar h3{
     text-align: center;
     
