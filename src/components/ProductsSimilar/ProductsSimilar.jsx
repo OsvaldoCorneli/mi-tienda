@@ -5,6 +5,11 @@ const ProductsSimilar = ({ id, name, price, image, onSale,formatearPrecio,calcul
     return(
 
         <Link to={'/productos/'+id} className={style.card_similar}>
+            {
+                onSale
+                ? <span>{discount} OFF</span>
+                : null
+            }
             <img src={image} alt={name} />
             <h3>{name}</h3>
             {
