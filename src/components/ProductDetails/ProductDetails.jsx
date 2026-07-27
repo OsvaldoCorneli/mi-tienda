@@ -5,6 +5,14 @@ import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
 import ProductsSimilar from "../ProductsSimilar/ProductsSimilar.jsx";
 import { calcularOferta, formatearPrecio } from "../../utils/functions.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSquarePlus,
+  faSquareMinus,
+} from "@fortawesome/free-solid-svg-icons";
+
+
+
 
 function ProductDetails() {
   const { id } = useParams();
@@ -87,22 +95,13 @@ function ProductDetails() {
             </div>
             <div className={style.seccion_cantidad}>
               <p>{`Stock: ${producto.stock}`}</p>
-              <div>
-                {/* <p>Cantidad:</p>
-                                <select>
-
-                                    {Array.from({ length: producto.stock }, (_, i) => i + 1).map(num => (
-                                        <option key={num} value={num}>
-                                            {num}
-                                        </option>
-                                    ))}
-                                </select> */}
+              <div className={style.seccion_cantidad_botones}>
                 <button
                   onClick={() => {
                     setCantidad(Math.min(producto.stock, cantidad + 1));
                   }}
                 >
-                  +
+                  <FontAwesomeIcon icon={faSquarePlus} className={style.icon_button}/>
                 </button>
                 <p>{cantidad}</p>
                 <button
@@ -110,7 +109,7 @@ function ProductDetails() {
                     setCantidad(Math.max(1, cantidad - 1));
                   }}
                 >
-                  -
+                <FontAwesomeIcon icon={faSquareMinus} className={style.icon_button}/>
                 </button>
               </div>
             </div>
