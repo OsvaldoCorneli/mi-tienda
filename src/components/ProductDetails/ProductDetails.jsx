@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  doc,
-  getDoc,
-  collection,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
-import { db } from "../../firebase/config.js";
 import style from "./ProductDetails.module.css";
 import { useCart } from "../../context/CartContext.jsx";
+import { useProducts } from "../../context/ProductsContext.jsx";
+import ProductsSimilar from "../ProductsSimilar/ProductsSimilar.jsx";
+import { calcularOferta, formatearPrecio } from "../../utils/functions.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSquarePlus,
+  faSquareMinus,
+} from "@fortawesome/free-solid-svg-icons";
+
+
+
 
 function ProductDetails() {
   const { id } = useParams();
   const [producto, setProducto] = useState({});
   const [prodSimilares, setProdSimilares] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [cantidad, setCantidad] = useState(1);
   const { addToCart, getCantidadActual } = useCart();
+  const { products, loading, getProductById, getProductsSimilar } =
+    useProducts();
 
   const handleAddToCart = () => {
     addToCart(producto, cantidad);
@@ -28,59 +31,20 @@ function ProductDetails() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setLoading(true); // Acordate de resetear el loading si cambias de ID
+    if (products.length > 0) {
+      const product = getProductById(id);
+      setProducto(product);
 
-    const docRef = doc(db, "productos", id);
-
-    getDoc(docRef)
-      .then((resp) => {
-        if (resp.exists()) {
-          const productoData = resp.data();
-          // 1. Guardamos el producto principal con su ID
-          setProducto({ ...productoData, id: resp.id });
-
-          // 2. Buscamos los similares en Firebase usando la categoría de este producto
-          const productosRef = collection(db, "productos");
-          // Armamos la query: "Traeme los que tengan la misma categoría, pero que NO sean el mismo producto"
-          const q = query(
-            productosRef,
-            where("category", "==", productoData.category),
-          );
-
-          return getDocs(q); // Le pasamos la posta al siguiente .then
-        } else {
-          setProducto(null);
-          setProdSimilares([]); // Si no hay producto, no hay similares
-          setLoading(false);
-        }
-      })
-      .then((querySnapshot) => {
-        // Este .then maneja la respuesta de los productos similares
-        if (querySnapshot) {
-          const similares = [];
-          querySnapshot.forEach((doc) => {
-            // Opcional: Evitá que el producto actual aparezca en la lista de similares
-            if (doc.id !== id) {
-              similares.push({ ...doc.data(), id: doc.id });
-            }
-          });
-
-          // Guardamos el array de productos similares en tu estado (que debería inicializar como [])
-          setProdSimilares(similares);
-          setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error cargando datos:", error);
-        setLoading(false);
-      });
-  }, [id]);
-
-  function calcularOferta(precio, descuento) {
-    const precioConDescuento = parseInt(precio - (precio * descuento) / 100);
-
-    return String(precioConDescuento);
-  }
+      if (Object.keys(product).length > 0) {
+        const productsSimilar = getProductsSimilar(
+          product.category,
+          product.productType,
+          product.id,
+        );
+        setProdSimilares(productsSimilar);
+      }
+    }
+  }, [id, products]);
 
   if (loading) {
     return <p>Cargando...</p>;
@@ -96,58 +60,85 @@ function ProductDetails() {
 
   return (
     <article>
-      <section className={style.seccion_img}>
-        <img src={producto.image} alt="" />
-        {producto.onSale ? <span>{`${producto.discount} OFF`}</span> : null}
-      </section>
-      <section className={style.seccion_info}>
-        {!producto.onSale ? (
-          <div className={style.seccion_price}>
-            <h2>{producto.name}</h2>
-            <p>{`$${producto.price}`}</p>
-          </div>
-        ) : (
-          <div className={style.seccion_price_onSale}>
-            <h2>{producto.name}</h2>
-            <p>{`$${producto.price}`}</p>
-            <span>{`$${calcularOferta(producto.price, producto.discount)}`}</span>
-          </div>
-        )}
-
-        <div className={style.seccion_function}>
-          <div className={style.seccion_button}>
-            <button
-              className={style.add_cart}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleAddToCart();
-              }}
-            >
-              Agregar al carrito
-            </button>
-            <button className={style.buy_now}>Comprar ahora</button>
-          </div>
-          <div className={style.seccion_cantidad}>
-            <p>{`Stock: ${producto.stock}`}</p>
-            <div>
-              {/* <p>Cantidad:</p>
-                                <select>
-
-                                    {Array.from({ length: producto.stock }, (_, i) => i + 1).map(num => (
-                                        <option key={num} value={num}>
-                                            {num}
-                                        </option>
-                                    ))}
-                                </select> */}
-              <button onClick={()=>{setCantidad(Math.min(producto.stock, cantidad + 1))}}>+</button>
-              <p>{cantidad}</p>
-              <button onClick={()=>{setCantidad(Math.max(1, cantidad - 1))}}>-</button>
+      <div className={style.div_container_1}>
+        <section className={style.seccion_img}>
+          <img src={producto.image} alt="" />
+          {producto.onSale ? <span>{`${producto.discount} OFF`}</span> : null}
+        </section>
+        <section className={style.seccion_info}>
+          {!producto.onSale ? (
+            <div className={style.seccion_price}>
+              <h2>{producto.name}</h2>
+              <p>{`$${formatearPrecio(producto.price)}`}</p>
             </div>
+          ) : (
+            <div className={style.seccion_price_onSale}>
+              <h2>{producto.name}</h2>
+              <p>{`$${formatearPrecio(producto.price)}`}</p>
+              <span>{`$${formatearPrecio(calcularOferta(producto.price, producto.discount))}`}</span>
+            </div>
+          )}
+
+          <div className={style.seccion_function}>
+            <div className={style.seccion_button}>
+              <button
+                className={style.add_cart}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleAddToCart();
+                }}
+              >
+                Agregar al carrito
+              </button>
+              <button className={style.buy_now}>Comprar ahora</button>
+            </div>
+            <div className={style.seccion_cantidad}>
+              <p>{`Stock: ${producto.stock}`}</p>
+              <div className={style.seccion_cantidad_botones}>
+                <button
+                className={style.icon_button}
+                  onClick={() => {
+                    setCantidad(Math.min(producto.stock, cantidad + 1));
+                  }}
+                >
+                  <FontAwesomeIcon icon={faSquarePlus} />
+                </button>
+                <p>{cantidad}</p>
+                <button
+                  onClick={() => {
+                    setCantidad(Math.max(1, cantidad - 1));
+                  }}
+                   className={style.icon_button}
+                >
+                <FontAwesomeIcon icon={faSquareMinus}/>
+                </button>
+              </div>
+            </div>
+            <p className={style.description_detail}>{producto.description}</p>
           </div>
-          <p className={style.description_detail}>{producto.description}</p>
-        </div>
-      </section>
+        </section>
+      </div>
+      <div className={style.div_container_2}>
+        <h2>Productos Similares</h2>
+        <section>
+          {prodSimilares
+            ? prodSimilares.map((item) => (
+                <ProductsSimilar
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  image={item.image}
+                  onSale={item.onSale}
+                  discount={item.discount}
+                  formatearPrecio={formatearPrecio}
+                  calcularOferta={calcularOferta}
+                />
+              ))
+            : null}
+        </section>
+      </div>
     </article>
   );
 }
