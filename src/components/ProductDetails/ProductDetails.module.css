@@ -167,15 +167,19 @@ article {
   display: flex;
   gap: 12px;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
-.seccion_cantidad_botones button{
-  width: 100%;
+.seccion_cantidad_botones a{
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.icon_button{
-  width: 100%;
+.seccion_cantidad_botones a:hover{
+  color: var(--color-accent);
 }
+
+
 
 @media (min-width: 766px) {
   article {

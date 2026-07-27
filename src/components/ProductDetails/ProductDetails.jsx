@@ -96,21 +96,21 @@ function ProductDetails() {
             <div className={style.seccion_cantidad}>
               <p>{`Stock: ${producto.stock}`}</p>
               <div className={style.seccion_cantidad_botones}>
-                <button
+                <a
                   onClick={() => {
                     setCantidad(Math.min(producto.stock, cantidad + 1));
                   }}
                 >
                   <FontAwesomeIcon icon={faSquarePlus} className={style.icon_button}/>
-                </button>
+                </a>
                 <p>{cantidad}</p>
-                <button
+                <a
                   onClick={() => {
                     setCantidad(Math.max(1, cantidad - 1));
                   }}
                 >
                 <FontAwesomeIcon icon={faSquareMinus} className={style.icon_button}/>
-                </button>
+                </a>
               </div>
             </div>
             <p className={style.description_detail}>{producto.description}</p>
