@@ -170,14 +170,19 @@ article {
   align-items: center;
 }
 
-.seccion_cantidad_botones a{
-  font-size: 1.5rem;
+.icon_button{
+
+background: none;
+  border: none;
   cursor: pointer;
+  padding: 0;
+  font-size: 2rem;
+
 }
 
-.seccion_cantidad_botones a:hover{
+.icon_button:hover{
   color: var(--color-accent);
-}
+} 
 
 
 
