@@ -57,13 +57,21 @@ export const ProductsProvider = ({ children }) => {
 
   }
 
+  const getProductoOnSale = () =>{
+
+    const productOnSale = products.filter((item)=> item.onSale)
+    return productOnSale
+
+  }
+
   return (
     <ProductsContext.Provider
       value={{
         products,
         loading,
         getProductById,
-        getProductsSimilar
+        getProductsSimilar,
+        getProductoOnSale
       }}
     >
       {children}
