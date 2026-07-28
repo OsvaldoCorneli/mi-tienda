@@ -20,7 +20,8 @@ export const ProductsProvider = ({ children }) => {
 
   const getProducts = async () => {
     try {
-      const prodDB = query(collection(db, "productos"), limit(50));
+      // const prodDB = query(collection(db, "productos"), limit(50));
+      const prodDB = query(collection(db, "productos"));
 
       const response = await getDocs(prodDB);
 
