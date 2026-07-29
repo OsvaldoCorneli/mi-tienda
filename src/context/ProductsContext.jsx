@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { db } from "../firebase/config";
 import { collection, getDocs, query, limit } from "firebase/firestore";
 
@@ -18,10 +18,14 @@ export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const productsOnSale = useMemo(() => {
+  return products.filter(item => item.onSale);
+}, [products]);
+
   const getProducts = async () => {
     try {
-      // const prodDB = query(collection(db, "productos"), limit(50));
-      const prodDB = query(collection(db, "productos"));
+      const prodDB = query(collection(db, "productos"), limit(100));
+      // const prodDB = query(collection(db, "productos"));
 
       const response = await getDocs(prodDB);
 
@@ -57,12 +61,6 @@ export const ProductsProvider = ({ children }) => {
 
   }
 
-  const getProductoOnSale = () =>{
-
-    const productOnSale = products.filter((item)=> item.onSale)
-    return productOnSale
-
-  }
 
   return (
     <ProductsContext.Provider
@@ -71,7 +69,7 @@ export const ProductsProvider = ({ children }) => {
         loading,
         getProductById,
         getProductsSimilar,
-        getProductoOnSale
+        productsOnSale
       }}
     >
       {children}

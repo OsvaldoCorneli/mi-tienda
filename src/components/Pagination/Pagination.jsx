@@ -4,10 +4,11 @@ function Pagination({ totalPosts, postsPerPage, setCurrentPage, currentPage}) {
   let pages = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    
     pages.push(i);
   }
 
-  console.log(pages)
+
   return (
     <div className={style.pagination}>
      
